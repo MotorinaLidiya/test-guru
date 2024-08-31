@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
-  def self.sorted_titles(category_name)
-    category = Category.find_by(title: category_name)
+  belongs_to :category
 
-    Test.where(category_id: category.id).order(id: :desc)
+  def self.sorted_titles_by_category(category_name)
+    joins(:category).where(categories: { title: category_name }).order(title: :desc).pluck(:title)
   end
 end
