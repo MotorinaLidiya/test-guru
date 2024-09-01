@@ -15,7 +15,13 @@ tests = [
 ]
 tests.map! { |test_attributes| Test.find_or_create_by(test_attributes) }
 
-questions = [
+passed_tests = [
+  { user_id: users.first.id, test_id: tests.first.id, completed: true },
+  { user_id: users.first.id, test_id: tests.second.id, completed: true }
+]
+passed_tests.each { |passed_test_attribute| PassedTest.find_or_create_by(passed_test_attribute) }
+
+  questions = [
   { body: 'Что такое Active Record в Rails?', test_id: tests.first.id },
   { body: 'Какой файл содержит маршруты в приложении Rails?', test_id: tests.first.id },
   { body: 'Что делает метод map в Ruby?', test_id: tests.second.id },
