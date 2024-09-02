@@ -17,7 +17,9 @@ tests.map! { |test_attributes| Test.find_or_create_by(test_attributes) }
 
 passed_tests = [
   { user_id: users.first.id, test_id: tests.first.id, completed: true },
-  { user_id: users.first.id, test_id: tests.second.id, completed: true }
+  { user_id: users.first.id, test_id: tests.second.id, completed: true },
+  { user_id: users.second.id, test_id: tests.second.id, completed: false },
+  { user_id: users.second.id, test_id: tests.third.id, completed: false }
 ]
 passed_tests.each { |passed_test_attribute| PassedTest.find_or_create_by(passed_test_attribute) }
 
