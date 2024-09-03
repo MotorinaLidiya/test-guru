@@ -2,9 +2,9 @@ categories = %w[Rails Ruby SQL]
 categories.map! { |category| Category.find_or_create_by(title: category) }
 
 users = [
-  { name: 'Lidia', role: 'admin' },
-  { name: 'Max', role: 'user' },
-  { name: 'Alex', role: 'user' }
+  { name: 'Lidia', role: 'admin', email: 'lidia@gmail.com' },
+  { name: 'Max', role: 'user', email: 'max101@yandex.ru' },
+  { name: 'Alex', role: 'user', email: 'alex.sokolov@mail.ru' }
 ]
 users.map! { |user_attributes| User.find_or_create_by(user_attributes) }
 
@@ -25,7 +25,7 @@ passed_tests = [
 ]
 passed_tests.each { |passed_test_attribute| PassedTest.find_or_create_by(passed_test_attribute) }
 
-  questions = [
+questions = [
   { body: 'Что такое Active Record в Rails?', test: tests[0] },
   { body: 'Какой файл содержит маршруты в приложении Rails?', test: tests[0] },
   { body: 'Что делает метод map в Ruby?', test: tests[1] },
