@@ -32,7 +32,7 @@ questions = [
   { body: 'Какой SQL-запрос используется для выборки данных?', test: tests[2] },
   { body: 'Что делает оператор JOIN в SQL?', test: tests[2] }
 ]
-questions.map! { |question_attributes| Question.find_or_create_by(question_attributes) }
+questions.map! { |question_attributes| Question.find_or_create_by!(question_attributes) }
 
 answers = [
   { body: 'Это компонент для управления представлениями', correct: false, question: questions[0] },
@@ -51,4 +51,4 @@ answers = [
   { body: 'Объединяет данные из нескольких таблиц', correct: true, question: questions[4] },
   { body: 'Изменяет структуру таблицы', correct: false, question: questions[4] }
 ]
-answers.each { |answer_attribute| Answer.find_or_create_by(answer_attribute) }
+answers.each { |answer_attribute| Answer.find_or_create_by!(answer_attribute) }
