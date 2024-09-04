@@ -1,19 +1,19 @@
 categories = %w[Rails Ruby SQL]
-categories.map! { |category| Category.find_or_create_by(title: category) }
+categories.map! { |category| Category.find_or_create_by!(title: category) }
 
 users = [
-  { name: 'Lidia', role: 'admin' },
-  { name: 'Max', role: 'user' },
-  { name: 'Alex', role: 'user' }
+  { name: 'Lidia', role: 'admin', email: 'lidia@gmail.com' },
+  { name: 'Max', role: 'user', email: 'max101@yandex.ru' },
+  { name: 'Alex', role: 'user', email: 'alex.sokolov@mail.ru' }
 ]
-users.map! { |user_attributes| User.find_or_create_by(user_attributes) }
+users.map! { |user_attributes| User.find_or_create_by!(user_attributes) }
 
 tests = [
   { title: 'Основы Rails', level: 1, category: categories[0], author: users[0] },
   { title: 'Основы Ruby', level: 2, category: categories[1], author: users[1] },
   { title: 'Основы SQL', level: 3, category: categories[2], author: users[2] }
 ]
-tests.map! { |test_attributes| Test.find_or_create_by(test_attributes) }
+tests.map! { |test_attributes| Test.find_or_create_by!(test_attributes) }
 
 passed_tests = [
   { user: users[0], test: tests[0], completed: true },
@@ -23,16 +23,16 @@ passed_tests = [
   { user: users[2], test: tests[0], completed: true },
   { user: users[2], test: tests[2], completed: false }
 ]
-passed_tests.each { |passed_test_attribute| PassedTest.find_or_create_by(passed_test_attribute) }
+passed_tests.each { |passed_test_attribute| PassedTest.find_or_create_by!(passed_test_attribute) }
 
-  questions = [
+questions = [
   { body: 'Что такое Active Record в Rails?', test: tests[0] },
   { body: 'Какой файл содержит маршруты в приложении Rails?', test: tests[0] },
   { body: 'Что делает метод map в Ruby?', test: tests[1] },
   { body: 'Какой SQL-запрос используется для выборки данных?', test: tests[2] },
   { body: 'Что делает оператор JOIN в SQL?', test: tests[2] }
 ]
-questions.map! { |question_attributes| Question.find_or_create_by(question_attributes) }
+questions.map! { |question_attributes| Question.find_or_create_by!(question_attributes) }
 
 answers = [
   { body: 'Это компонент для управления представлениями', correct: false, question: questions[0] },
@@ -51,4 +51,4 @@ answers = [
   { body: 'Объединяет данные из нескольких таблиц', correct: true, question: questions[4] },
   { body: 'Изменяет структуру таблицы', correct: false, question: questions[4] }
 ]
-answers.each { |answer_attribute| Answer.find_or_create_by(answer_attribute) }
+answers.each { |answer_attribute| Answer.find_or_create_by!(answer_attribute) }
