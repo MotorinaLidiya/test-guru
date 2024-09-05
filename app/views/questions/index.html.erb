@@ -1,0 +1,8 @@
+<h1>Вопросы теста: <%= @test.title %></h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li><%= link_to question.body, test_question_path(@test, question) %></li>
+  <% end %>
+</ul>
+<%= button_to 'Создать', new_test_question_path(@test), method: :get %>
