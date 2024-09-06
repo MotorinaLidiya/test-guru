@@ -1,0 +1,11 @@
+<%- model = @question.new_record? ? [@test, @question] : @question %>
+<%= form_with(model:, local: true) do |form| %>
+  <p>
+    <%= form.label :body, 'Вопрос:' %>
+    <%= form.text_field :body, id: 'question-body' %>
+  </p>
+
+  <div>
+    <%= form.submit 'Сохранить' %>
+  </div>
+<% end %>
