@@ -1,0 +1,12 @@
+<h1>Создание нового вопроса</h1>
+
+<%= form_with(url: test_questions_path(@test), method: :post, local: true) do |form| %>
+  <p>
+    <%= form.label :body, 'Вопрос:' %>
+    <%= form.text_area :body, id: 'question-body' %>
+  </p>
+
+  <div>
+    <%= form.submit 'Добавить' %>
+  </div>
+<% end %>
