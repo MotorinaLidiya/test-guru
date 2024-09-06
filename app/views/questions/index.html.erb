@@ -2,7 +2,7 @@
 
 <ul>
   <% @questions.each do |question| %>
-    <li><%= link_to question.body, test_question_path(@test, question) %></li>
+    <li><%= link_to question.body, question_path(question) %></li>
   <% end %>
 </ul>
 <%= button_to 'Создать', new_test_question_path(@test), method: :get %>
