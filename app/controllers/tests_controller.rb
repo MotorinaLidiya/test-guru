@@ -2,7 +2,7 @@ class TestsController < ApplicationController
   before_action :find_test, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tests = Test.all
+    @tests = Test.includes(:author, :questions).all
   end
 
   def show

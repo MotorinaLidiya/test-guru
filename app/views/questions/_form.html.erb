@@ -1,5 +1,6 @@
 <%- model = @question.new_record? ? [@test, @question] : @question %>
 <%= form_with(model:, local: true) do |form| %>
+  <%= render 'shared/errors', resource: @question%>
   <p>
     <%= form.label :body, 'Вопрос:' %>
     <%= form.text_field :body, id: 'question-body' %>
@@ -9,3 +10,5 @@
     <%= form.submit 'Сохранить' %>
   </div>
 <% end %>
+
+<p><%= button_to 'Назад', test_path(@test), method: :get %></p>
