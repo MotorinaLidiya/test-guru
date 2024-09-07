@@ -2,4 +2,4 @@
 
 <p><%= button_to 'Изменить', edit_question_path(@question), method: :get %></p>
 <p><%= button_to 'Удалить', @question, method: :delete, data: { confirm: 'Вы уверены?' } %></p>
-<p><%= button_to 'Назад', test_questions_path(@test), method: :get %></p>
+<p><%= button_to 'Назад', test_path(@test), method: :get %></p>

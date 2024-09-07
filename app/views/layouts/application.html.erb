@@ -16,16 +16,7 @@
         <%= yield %>
       </div>
 
-      <footer>
-        <p> <%= current_year %> Автор проекта: Моторина Лидия</p>
-
-        <p>
-          <a href="<%= github_url('MotorinaLidiya', 'test-guru') %>" target="_blank" rel="nofollow noopener">TestGuru</a>
-          — платформа для создания тестов и управления ими
-        </p>
-
-        <p><a href="https://thinknetica.com" target="_blank" rel="nofollow noopener">Учебный проект в онлайн-школе Thinknetica</a></p>
-      </footer>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>
