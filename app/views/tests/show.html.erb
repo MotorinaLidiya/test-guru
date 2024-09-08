@@ -1,9 +1,7 @@
 <h1>Вопросы теста: <%= @test.title %></h1>
 
 <ul>
-  <% @questions.each do |question| %>
-    <li><%= link_to question.body, question_path(question) %></li>
-  <% end %>
+  <%= render @questions %>
 </ul>
 
 <p><%= button_to 'Изменить тест', edit_test_path, method: :get %></p>

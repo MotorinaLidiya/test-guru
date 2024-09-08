@@ -1,6 +1,6 @@
-<%- model = @question.new_record? ? [@test, @question] : @question %>
-<%= form_with(model:, local: true) do |form| %>
-  <%= render 'shared/errors', resource: @question%>
+<%= form_with model: [@test, @question], local: true do |form| %>
+  <%= render 'shared/errors', resource: @question %>
+
   <p>
     <%= form.label :body, 'Вопрос:' %>
     <%= form.text_field :body, id: 'question-body' %>
@@ -11,4 +11,4 @@
   </div>
 <% end %>
 
-<p><%= button_to 'Назад', test_path(@test), method: :get %></p>
+<p><%= button_to 'Назад', test_path(@question.test), method: :get %></p>

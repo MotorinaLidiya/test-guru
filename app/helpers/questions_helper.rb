@@ -1,19 +1,15 @@
 module QuestionsHelper
-  def question_header(question = nil)
-    title = @test.title || "Неизвестный тест"
-    if question == nil
-      "Создать вопрос для теста: #{title}"
-    else
-      "Редактировать вопрос теста: #{title}"
-    end
+  def question_header(title, body = nil)
+    return "Создать вопрос для теста: #{title}" if body
+
+    "Редактировать вопрос теста: #{title}"
   end
 
   def current_year
     "Год: #{Time.current.year}"
   end
 
-  def github_url(author, repo, link_text = nil)
-    link_text ||= "#{author}/#{repo}"
-    link_to "#{link_text}", "https://github.com/#{author}/#{repo}", target: "_blank", rel: "nofollow noopener"
+  def github_url(author, repo)
+    link_to "#{repo}", "https://github.com/#{author}/#{repo}", target: "_blank", rel: "nofollow noopener"
   end
 end
