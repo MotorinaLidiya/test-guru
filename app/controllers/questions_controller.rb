@@ -1,35 +1,39 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:index, :new, :create]
-  before_action :find_question, only: [:show, :destroy]
+  before_action :find_test, only: [:new, :create]
+  before_action :find_question, only: [:show, :destroy, :edit, :update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-    @questions = @test.questions
-  end
-
   def show
-    render html: "
-      <h2>Вопрос: #{@question.body}</h2>
-      #{helpers.button_to 'Удалить', question_path(@question), method: :delete}
-      #{helpers.link_to 'Назад', test_questions_path(@question.test)}
-    ".html_safe
+    @test = @question.test
   end
 
-  def new; end
+  def new
+    @question = Question.new(test: @test)
+  end
+
+  def edit; end
 
   def create
     @question = @test.questions.build(question_params)
     if @question.save
-      redirect_to @question, notice: 'Question successfully created.'
+      redirect_to @question, notice: 'Вопрос успешно добавлен'
     else
       render :new
     end
   end
 
+  def update
+    if @question.update(question_params)
+      redirect_to @question, notice: 'Вопрос успешно изменен'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @question.destroy
-    redirect_to test_questions_path(@question.test)
+    redirect_to test_path(@question.test)
   end
 
   private
@@ -39,7 +43,7 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = params[:test_id] ? @test.questions.find(params[:id]) : Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def rescue_with_question_not_found
@@ -47,6 +51,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.permit(:body)
+    params.require(:question).permit(:body)
   end
 end

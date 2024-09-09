@@ -1,0 +1,22 @@
+<% if @tests.present? %>
+  <h1>Все тесты </h1>
+
+  <table>
+    <tr>
+      <th>Название</th>
+      <th>Уровень</th>
+      <th>Количество вопросов</th>
+      <th>Автор</th>
+      <th colspan="3">Actions</th>
+    </tr>
+
+    <%= render @tests %>
+  </table>
+
+<% else %>
+  <p>Тестов нет.</p>
+<% end %>
+
+<p>
+  <%= button_to 'Добавить тест', new_test_path, method: :get %>
+</p>

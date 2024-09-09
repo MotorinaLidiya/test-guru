@@ -11,6 +11,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div style="height: 100vh; display: flex; flex-direction: column;">
+      <div style="flex: 1;">
+        <%= yield %>
+      </div>
+
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>
