@@ -1,8 +1,8 @@
 module QuestionsHelper
-  def question_header(title, body = nil)
-    return "Создать вопрос для теста: #{title}" if body
+  def question_header(question)
+    return "Создать вопрос для теста: #{question.test.title}" if question.new_record?
 
-    "Редактировать вопрос теста: #{title}"
+    "Редактировать вопрос теста: #{question.test.title}"
   end
 
   def current_year
