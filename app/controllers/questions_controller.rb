@@ -34,7 +34,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    TestPassage.where(current_question_id: @question.id).update_all(current_question_id: :destroy)
     @question.destroy
     redirect_to test_path(@question.test)
   end

@@ -1,7 +1,7 @@
 <h1>Тест: <%= @test_passage.test.title %> завершен</h1>
 
 <h3>
-  Ваш результат: <span style="color: <%= @test_passage.result_count >= 85 ? 'green' : 'red' %>;">
+  Ваш результат: <span style="color: <%= @test_passage.result_successful? ? 'green' : 'red' %>;">
     <%= @test_passage.result_message %>
   </span>
 </h3>
