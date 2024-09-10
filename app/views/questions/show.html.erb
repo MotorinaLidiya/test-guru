@@ -1,4 +1,13 @@
-<h2>Вопрос: <%= @question.body %></h2>
+<h1><%= @question.test.title % Question %></h1>
+<h3><%= @question.body %></h3>
+
+<h2>Ответы:</h2>
+
+<%= link_to 'Добавить ответ', new_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
 
 <p><%= button_to 'Изменить', edit_question_path(@question), method: :get %></p>
 <p><%= button_to 'Удалить', @question, method: :delete, data: { confirm: 'Вы уверены?' } %></p>

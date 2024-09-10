@@ -10,4 +10,5 @@
                 test_path(test),
                 method: :delete %>
   </td>
+  <td><%= button_to 'Пройти тест', start_test_path(test) if test.questions.any? %></td>
 </tr>

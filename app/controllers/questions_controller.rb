@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:new, :create]
-  before_action :find_question, only: [:show, :destroy, :edit, :update]
+  before_action :find_test, only: %i[ new create ]
+  before_action :find_question, only: %i[ show destroy edit update ]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -13,6 +13,8 @@ class QuestionsController < ApplicationController
   end
 
   def edit; end
+
+  def delete; end
 
   def create
     @question = @test.questions.build(question_params)
@@ -32,6 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    TestPassage.where(current_question_id: @question.id).update_all(current_question_id: :destroy)
     @question.destroy
     redirect_to test_path(@question.test)
   end
