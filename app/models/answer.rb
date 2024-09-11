@@ -9,7 +9,8 @@ class Answer < ApplicationRecord
   private
 
   def validate_answers_quantity
-    total_answers = question.answers.count
+    total_answers = question.answers.count if question
+
     errors.add(:question_answers, 'должно быть от 1 до 4 ответов к вопросу') if total_answers >= 4
   end
 end
