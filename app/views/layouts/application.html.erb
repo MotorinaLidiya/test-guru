@@ -11,12 +11,19 @@
   </head>
 
   <body>
-    <div style="height: 100vh; display: flex; flex-direction: column;">
-      <div style="flex: 1;">
-        <%= yield %>
-      </div>
+      <div class="container">
+        <% if logged_in? %>
+          <div class="nav-container">
+            <h3>Добро пожаловать, <%= current_user.name %> <%= link_to 'Guru', tests_path %></h3>
+            <p class="nav logout"><%= button_to 'Выйти из аккаунта', logout_path, method: :delete %></p>
+          </div>
+        <% end %>
 
-      <%= render 'shared/footer' %>
-    </div>
+        <%= yield %>
+
+        <div class="bottom">
+          <%= render 'shared/footer' %>
+        </div>
+      </div>
   </body>
 </html>
