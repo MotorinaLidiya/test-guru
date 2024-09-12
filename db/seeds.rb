@@ -2,9 +2,9 @@ categories = %w[Rails Ruby SQL]
 categories.map! { |category| Category.find_or_create_by!(title: category) }
 
 users = [
-  { name: 'Lidia', role: 'admin', email: 'lidia@gmail.com' },
-  { name: 'Max', role: 'user', email: 'max101@yandex.ru' },
-  { name: 'Alex', role: 'user', email: 'alex.sokolov@mail.ru' }
+  { name: 'Lidia', role: 'admin', email: 'lidia@gmail.com', password_digest: '1a2b3c4d5e' },
+  { name: 'Max', role: 'user', email: 'max101@yandex.ru', password_digest: 'pass12word' },
+  { name: 'Alex', role: 'user', email: 'alex.sokolov@mail.ru', password_digest: 'rubyonrails' }
 ]
 users.map! { |user_attributes| User.find_or_create_by!(user_attributes) }
 

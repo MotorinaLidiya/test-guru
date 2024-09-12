@@ -4,7 +4,7 @@
   <%= render @questions %>
 </ul>
 
-<p><%= button_to 'Изменить тест', edit_test_path, method: :get %></p>
-<p><%= button_to 'Удалить тест', @test, method: :delete, data: { confirm: 'Вы уверены?' } %></p>
-<p><%= button_to 'Добавить вопрос', new_test_question_path(@test), method: :get %></p>
-<p><%= button_to 'Назад', tests_path, method: :get %></p>
+<div class="padding-10"><%= button_to 'Изменить тест', edit_test_path, method: :get %></div>
+<div class="padding-10"><%= button_to 'Удалить тест', @test, method: :delete, data: { confirm: 'Вы уверены?' } %></div>
+<div class="padding-10"><%= button_to 'Добавить вопрос', new_test_question_path(@test), method: :get %></div>
+<div class="padding-10"><%= button_to 'Назад', tests_path, method: :get %></div>

@@ -1,7 +1,8 @@
 <% if @tests.present? %>
-  <h1>Все тесты </h1>
+  <h1 class="center-text">Все тесты </h1>
 
-  <table>
+  <table class="styled-table">
+    <thead>
     <tr>
       <th>Название</th>
       <th>Уровень</th>
@@ -9,8 +10,10 @@
       <th>Автор</th>
       <th colspan="4">Actions</th>
     </tr>
-
+    </thead>
+    <tbody>
     <%= render @tests %>
+    </tbody>
   </table>
 
 <% else %>

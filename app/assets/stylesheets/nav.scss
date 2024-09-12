@@ -1,0 +1,10 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav.logout {
+  margin-left: auto;
+}
