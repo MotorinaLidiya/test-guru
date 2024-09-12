@@ -3,16 +3,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
-  before_action :store_path
+  before_action :store_path, unless: :logged_in?
 
   private
 
   def authenticate_user!
-    unless current_user
-      redirect_to login_path, alert: 'Войдите в аккаунт '
-    end
-
-    cookies[:email] = current_user&.email
+    redirect_to login_path, alert: 'Войдите в аккаунт ' unless current_user
   end
 
   def current_user
@@ -24,12 +20,12 @@ class ApplicationController < ActionController::Base
   end
 
   def store_path
-    if request.get? && !logged_in? && request.path.present? && request.path != '/login'
-      session[:forwarding_url] = request.path
+    if request.get? && request.path.present? && request.path != '/login'
+      cookies[:forwarding_url] = { value: request.path, expires: 1.hour.from_now }
     end
   end
 
   def after_sign_in_path
-    session.delete(:forwarding_url) || root_path
+    cookies.delete(:forwarding_url) || root_path
   end
 end

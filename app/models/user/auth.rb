@@ -1,6 +1,4 @@
 module User::Auth
-  EMAIL_FORMAT = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/i
-
   extend ActiveSupport::Concern
 
   attr_reader :password
@@ -9,7 +7,7 @@ module User::Auth
   included do
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
-    validates :email, format: { with: EMAIL_FORMAT }, if: -> { email.present? }
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, if: -> { email.present? }
     validates :role, presence: true
     validates :password, presence: true, if: Proc.new { |u| u.password_digest.blank? }
     validates :password, confirmation: true
