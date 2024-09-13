@@ -1,6 +1,10 @@
 <% if @tests.present? %>
   <h1 class="center-text">Все тесты </h1>
 
+  <p>
+    <%= button_to 'Добавить тест', new_admin_test_path, method: :get %>
+  </p>
+
   <table class="styled-table">
     <thead>
     <tr>
@@ -8,7 +12,7 @@
       <th>Уровень</th>
       <th>Количество вопросов</th>
       <th>Автор</th>
-      <th>Прохождение</th>
+      <th colspan="4">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -17,5 +21,5 @@
   </table>
 
 <% else %>
-  <p>Тестов еще нет.</p>
+  <p>Тестов нет.</p>
 <% end %>

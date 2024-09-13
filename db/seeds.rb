@@ -2,16 +2,21 @@ categories = %w[Rails Ruby SQL]
 categories.map! { |category| Category.find_or_create_by!(title: category) }
 
 users = [
-  { name: 'Lidia', role: 'admin', email: 'lidia@gmail.com', password_digest: '1a2b3c4d5e' },
-  { name: 'Max', role: 'user', email: 'max101@yandex.ru', password_digest: 'pass12word' },
-  { name: 'Alex', role: 'user', email: 'alex.sokolov@mail.ru', password_digest: 'rubyonrails' }
+  { name: 'Lidia', type: 'Admin', email: 'lidia@gmail.com', password: '1a2b3c4d5e', first_name: 'Лидия' , last_name: 'Моторина' },
+  { name: 'Max', type: 'User', email: 'max101@yandex.ru', password: 'pass12word' },
+  { name: 'Alex', type: 'User', email: 'alex.sokolov@mail.ru', password: 'rubyonrails' }
 ]
-users.map! { |user_attributes| User.find_or_create_by!(user_attributes) }
+users.map! do |user_attributes|
+  User.find_or_create_by!(user_attributes.except(:password)) do |user|
+    user.password = user_attributes[:password]
+    user.confirmed_at = Time.now
+  end
+end
 
 tests = [
   { title: 'Основы Rails', level: 1, category: categories[0], author: users[0] },
-  { title: 'Основы Ruby', level: 2, category: categories[1], author: users[1] },
-  { title: 'Основы SQL', level: 3, category: categories[2], author: users[2] }
+  { title: 'Основы Ruby', level: 2, category: categories[1], author: users[0] },
+  { title: 'Основы SQL', level: 3, category: categories[2], author: users[0] }
 ]
 tests.map! { |test_attributes| Test.find_or_create_by!(test_attributes) }
 

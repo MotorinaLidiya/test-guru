@@ -1,0 +1,10 @@
+<li>
+  <%= answer.body %><br>
+  <%= link_to 'Открыть', admin_answer_path(answer) %> |
+  <%= link_to 'Изменить', edit_admin_answer_path(answer) %>
+  <%= button_to 'Удалить',
+                admin_answer_path(answer),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' },
+              style: 'color: red;' %>
+</li>
