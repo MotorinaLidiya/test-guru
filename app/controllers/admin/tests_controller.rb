@@ -11,7 +11,6 @@ class Admin::TestsController < Admin::BaseController
 
   def new
     @test = Test.new
-    @test.author_id = current_user.id
   end
 
   def edit; end
@@ -20,9 +19,9 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = Test.new(test_params)
+    @test.author = current_user
 
     if @test.save
-      @test.author_id ||= current_user.id
       redirect_to admin_test_path(@test)
     else
       render :new
@@ -42,11 +41,6 @@ class Admin::TestsController < Admin::BaseController
     redirect_to admin_tests_path
   end
 
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
-  end
-
   private
 
   def find_test
@@ -54,6 +48,6 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 end
