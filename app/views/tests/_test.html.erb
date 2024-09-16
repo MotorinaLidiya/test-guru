@@ -3,5 +3,5 @@
   <td class="center-text"><%= test_level(test) %></td>
   <td class="center-text"><%= test.questions.length %></td>
   <td class="center-text"><%= test.author.first_name %> <%= test.author.last_name %></td>
-  <td class="center-text"><%= button_to 'Пройти тест', start_test_path(test) if test.questions.any? %></td>
+  <td class="center-text"><%= button_to t('helpers.button.start_test'), start_test_path(test) if test.questions.any? %></td>
 </tr>

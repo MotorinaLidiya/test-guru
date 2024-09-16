@@ -1,8 +1,8 @@
-<h1>Новый ответ</h1>
+<h1><%= t('.header') %></h1>
 <p>
   <%= @question.body %>
 </p>
 
 <%= render 'form' %>
 
-<%= link_to 'Назад', admin_question_path(@question) %>
+<%= button_to t('helpers.button.back'), admin_question_path(@question), method: :get %>

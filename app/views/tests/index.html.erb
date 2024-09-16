@@ -1,14 +1,15 @@
+<h1 class="center-text"><%= t('.header') %></h1>
+
 <% if @tests.present? %>
-  <h1 class="center-text">Все тесты </h1>
 
   <table class="styled-table">
     <thead>
     <tr>
-      <th>Название</th>
-      <th>Уровень</th>
-      <th>Количество вопросов</th>
-      <th>Автор</th>
-      <th>Прохождение</th>
+      <th><%= t('.title') %></th>
+      <th><%= t('.level') %></th>
+      <th><%= t('.questions_quantity') %></th>
+      <th><%= t('.author') %></th>
+      <th><%= t('.passage') %></th>
     </tr>
     </thead>
     <tbody>
@@ -17,5 +18,5 @@
   </table>
 
 <% else %>
-  <p>Тестов еще нет.</p>
+  <p><%= t('.empty') %></p>
 <% end %>

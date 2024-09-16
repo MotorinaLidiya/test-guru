@@ -1,11 +1,12 @@
-<h1>Тест: <%= @test_passage.test.title %> завершен</h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 
 <h3>
-  Ваш результат: <span style="color: <%= @test_passage.result_successful? ? 'green' : 'red' %>;">
+  <%= t('test_passages.result.message') %>
+  <span style="color: <%= @test_passage.result_successful? ? 'green' : 'red' %>;">
     <%= @test_passage.result_message %>
   </span>
 </h3>
 
 <p>
-  <%= button_to 'Вернуться к списку тестов', tests_path, method: :get %>
+  <%= button_to t('helpers.button.back_to_tests'), tests_path, method: :get %>
 </p>
