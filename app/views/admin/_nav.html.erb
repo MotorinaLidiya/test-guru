@@ -1,0 +1,8 @@
+<div class="nav nav-admin">
+  <span class="nav-admin title">Панель управления | TestGuru</span>
+
+  <div class="nav-admin user" style="display: inline">
+    Добро пожаловать, <b class="nav-admin user-email"><%= current_user.name.present? ? current_user.name : current_user.email %></b> Guru
+    <%= button_to 'Выйти из аккаунта', destroy_user_session_path, method: :delete, form: { style: 'display: inline;' } %>
+  </div>
+</div>
