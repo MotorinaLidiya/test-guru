@@ -1,4 +1,4 @@
-<h1>Редактировать ответ</h1>
+<h1><%= t('.header') %></h1>
 
 <p>
   <%= @answer.question.body %>
@@ -6,4 +6,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Назад', admin_question_path(@answer.question) %>
+<%= button_to t('helpers.button.back'), admin_question_path(@answer.question), method: :get %>

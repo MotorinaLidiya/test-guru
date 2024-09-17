@@ -1,18 +1,19 @@
+<h1 class="center-text"><%= t('.header') %></h1>
+
 <% if @tests.present? %>
-  <h1 class="center-text">Все тесты </h1>
 
   <p>
-    <%= button_to 'Добавить тест', new_admin_test_path, method: :get %>
+    <%= button_to t('helpers.button.add_test'), new_admin_test_path, method: :get %>
   </p>
 
   <table class="styled-table">
     <thead>
     <tr>
-      <th>Название</th>
-      <th>Уровень</th>
-      <th>Количество вопросов</th>
-      <th>Автор</th>
-      <th colspan="4">Actions</th>
+      <th><%= t('.title') %></th>
+      <th><%= t('.level') %></th>
+      <th><%= t('.questions_quantity') %></th>
+      <th><%= t('.author') %></th>
+      <th colspan="4"><%= t('.actions') %></th>
     </tr>
     </thead>
     <tbody>
@@ -21,5 +22,5 @@
   </table>
 
 <% else %>
-  <p>Тестов нет.</p>
+  <p><%= t('.empty') %></p>
 <% end %>

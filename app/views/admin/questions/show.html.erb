@@ -1,14 +1,14 @@
-<h1><%= @question.test.title % Question %></h1>
+<h1><%= @question.test.title %></h1>
 <h3><%= @question.body %></h3>
 
-<h2>Ответы:</h2>
+<h2><%= t('.title') %></h2>
 
-<%= link_to 'Добавить ответ', new_admin_question_answer_path(@question) %>
+<%= button_to t('helpers.button.add_answer'), new_admin_question_answer_path(@question), method: :get %>
 
 <ol>
   <%= render @question.answers %>
 </ol>
 
-<div class="padding-10"><%= button_to 'Изменить', edit_admin_question_path(@question), method: :get %></div>
-<div class="padding-10"><%= button_to 'Удалить', admin_question_path(@question), method: :delete, data: { confirm: 'Вы уверены?' } %></div>
-<div class="padding-10"><%= button_to 'Назад', admin_test_path(@question.test), method: :get %></div>
+<div class="padding-10"><%= button_to t('helpers.button.modify_question'), edit_admin_question_path(@question), method: :get %></div>
+<div class="padding-10"><%= button_to t('helpers.button.delete_question'), admin_question_path(@question), method: :delete, data: { confirm: 'Вы уверены?' } %></div>
+<div class="padding-10"><%= button_to t('helpers.button.back'), admin_test_path(@question.test), method: :get %></div>

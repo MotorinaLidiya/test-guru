@@ -3,11 +3,9 @@
   <td class="center-text"><%= test_level(test) %></td>
   <td class="center-text"><%= test.questions.length %></td>
   <td class="center-text"><%= test.author.first_name %> <%= test.author.last_name %></td>
-  <td class="center-text"><%= link_to 'Открыть', admin_test_path(test) %></td>
-  <td class="center-text"><%= link_to 'Изменить', edit_admin_test_path(test) %></td>
+  <td class="center-text"><%= button_to t('helpers.button.open'), admin_test_path(test), method: :get %></td>
+  <td class="center-text"><%= button_to t('helpers.button.modify_test'), edit_admin_test_path(test), method: :get %></td>
   <td class="center-text">
-    <%= button_to 'Удалить',
-                  admin_test_path(test),
-                method: :delete %>
+    <%= button_to t('helpers.button.delete_test'), admin_test_path(test), method: :delete %>
   </td>
 </tr>

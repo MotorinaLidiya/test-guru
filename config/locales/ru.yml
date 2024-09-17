@@ -1,2 +1,121 @@
 ru:
-  hello: "Привет, мир"
+  hello: "Привет мир!"
+
+  helpers:
+    submit:
+      tests:
+        create: "Создать Тест"
+        update: "Обновить Тест"
+      test_passages:
+        next: "Далее"
+      questions:
+        save: "Сохранить"
+      answers:
+        save: "Сохранить"
+    label:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+      question:
+        body: "Вопрос"
+      answer:
+        body: "Ответ"
+        correct: "Статус"
+    select:
+      prompt: "Выберите категорию"
+    button:
+      start_test: "Пройти Тест"
+      back_to_tests: "Вернуться к списку тестов"
+      back: "Назад"
+      add_test: "Добавить Тест"
+      add_question: "Добавить Вопрос"
+      add_answer: "Добавить Ответ"
+      modify_test: "Изменить тест"
+      delete_test: "Удалить тест"
+      modify_question: "Изменить вопрос"
+      delete_question: "Удалить вопрос"
+      modify_answer: "Изменить ответ"
+      delete_answer: "Удалить ответ"
+      open: "Открыть"
+      logout: "Выйти из аккаунта"
+    test_levels:
+      easy: "легкий"
+      medium: "средний"
+      hard: "тяжелый"
+
+  tests:
+    index:
+      header: "Доступные тесты"
+      title: "Название"
+      level: "Уровень"
+      questions_quantity: "Количество Вопросов"
+      author: "Автор"
+      passage: "Прохождение"
+      actions: "Действия"
+      empty: "Тестов еще нет."
+
+  admin:
+    tests:
+      create:
+        success: "Тест был успешно создан."
+      update:
+        success: "Тест был успешно обновлен."
+      destroy:
+        success: "Тест был успешно удален."
+      index:
+        header: "Доступные тесты к редактированию"
+        title: "Название"
+        level: "Уровень"
+        questions_quantity: "Количество Вопросов"
+        author: "Автор"
+        passage: "Прохождение"
+        actions: "Действия"
+        empty: "Тестов еще нет."
+      new:
+        header: "Создание Теста"
+      edit:
+        header: "Редактировать Тест %{test}"
+    answers:
+      create:
+        success: "Ответ был успешно создан."
+      update:
+        success: "Ответ был успешно обновлен."
+      destroy:
+        success: "Ответ был успешно удален."
+      edit:
+        header: "Редактировать ответ"
+      new:
+        header: "Новый ответ"
+      show:
+        answer: "Ответ: "
+        status: "Статус: "
+    questions:
+      create:
+        success: "Вопрос был успешно создан."
+      update:
+        success: "Вопрос был успешно обновлен."
+      destroy:
+        success: "Вопрос был успешно удален."
+      show:
+        title: "Ответы:"
+
+  test_passages:
+    result:
+      header: "Тест %{title} успешно завершен!"
+      message: "Ваш результат: "
+    show:
+      header: "Прохождение теста %{title}."
+      question_status: "Вопрос %{current} из %{total}"
+
+  shared:
+    errors:
+      header:
+        one: "Обнаружена %{count} ошибка"
+        few: "Обнаружено %{count} ошибки"
+        many: "Обнаружено %{count} ошибок"
+        other: "Обнаружено %{count} ошибки"
+
+  tests_mailer:
+    completed_test:
+      subject: "Вы успешно завершили тест на TestGuru!"

@@ -1,6 +1,6 @@
-<h1>Прохождение теста: <%= @test_passage.test.title %></h1>
+<h1><%= t('.header', title: @test_passage.test.title) %></h1>
 <p>
-  Вопрос <%= @test_passage.current_question_number %> из <%= @test_passage.test.questions.size %>
+  <%= t('.question_status', current: @test_passage.current_question_number, total: @test_passage.test.questions.size) %>
 </p>
 
 <b>
@@ -15,5 +15,5 @@
     </p>
   <% end %>
 
-  <p><%= form.submit 'Далее' %></p>
+  <p><%= form.submit t('helpers.submit.test_passages.next')%></p>
 <% end %>

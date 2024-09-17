@@ -1,10 +1,8 @@
 <li>
   <%= answer.body %><br>
-  <%= link_to 'Открыть', admin_answer_path(answer) %> |
-  <%= link_to 'Изменить', edit_admin_answer_path(answer) %>
-  <%= button_to 'Удалить',
-                admin_answer_path(answer),
-              method: :delete,
-              data: { confirm: 'Вы уверены?' },
-              style: 'color: red;' %>
+<p>
+  <%= button_to t('helpers.button.open'), admin_answer_path(answer), method: :get, form: { style: 'display: inline;' } %>
+  <%= button_to t('helpers.button.modify_answer'), edit_admin_answer_path(answer), method: :get, form: { style: 'display: inline;' } %>
+  <%= button_to t('helpers.button.delete_answer'), admin_answer_path(answer), method: :delete, form: { style: 'display: inline;' } %>
+</p>
 </li>

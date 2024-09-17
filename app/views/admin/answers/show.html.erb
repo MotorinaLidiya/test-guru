@@ -1,17 +1,13 @@
-<h1>Вопрос</h1>
+<h2><%= @answer.question.body %></h2>
 
 <p>
-  <%= @answer.question.body %>
-</p>
-
-<p>
-  <b>Ответ:</b>
+  <b><%= t('.answer') %></b>
   <%= @answer.body %>
 </p>
 
 <p>
-  <b>Статус:</b>
+  <b><%= t('.status') %></b>
   <%= @answer.correct %>
 </p>
 
-<%= link_to 'Назад', admin_question_path(@answer.question) %>
+<%= button_to t('helpers.button.back'), admin_question_path(@answer.question), method: :get %>

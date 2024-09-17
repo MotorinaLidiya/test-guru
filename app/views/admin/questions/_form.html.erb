@@ -2,11 +2,11 @@
   <%= render 'shared/errors', resource: @question %>
 
   <p>
-    <%= form.label :body, 'Вопрос:' %>
+    <%= form.label :body %>
     <%= form.text_field :body, id: 'question-body' %>
   </p>
 
   <div>
-    <%= form.submit 'Сохранить' %>
+    <%= form.submit t('helpers.submit.questions.save') %>
   </div>
 <% end %>
