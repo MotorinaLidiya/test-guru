@@ -39,6 +39,10 @@ ru:
       delete_answer: "Удалить ответ"
       open: "Открыть"
       logout: "Выйти из аккаунта"
+    test_levels:
+      easy: "легкий"
+      medium: "средний"
+      hard: "тяжелый"
 
   tests:
     index:

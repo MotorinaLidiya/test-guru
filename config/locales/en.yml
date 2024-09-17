@@ -39,6 +39,10 @@ en:
       delete_answer: "Delete answer"
       open: "Open"
       logout: "Log out"
+    test_levels:
+      easy: "easy"
+      medium: "medium"
+      hard: "hard"
 
   tests:
     index:
