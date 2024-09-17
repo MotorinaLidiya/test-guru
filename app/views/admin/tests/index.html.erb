@@ -1,12 +1,12 @@
-<h1 class="center-text"><%= t('.header') %></h1>
+<h2 class="center-text"><%= t('.header') %></h2>
 
 <% if @tests.present? %>
 
   <p>
-    <%= button_to t('helpers.button.add_test'), new_admin_test_path, method: :get %>
+    <%= button_to t('helpers.button.add_test'), new_admin_test_path, method: :get, class: "btn custom-button" %>
   </p>
 
-  <table class="styled-table">
+  <table class="styled-table-admin">
     <thead>
     <tr>
       <th><%= t('.title') %></th>

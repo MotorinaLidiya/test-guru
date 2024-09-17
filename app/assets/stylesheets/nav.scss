@@ -1,36 +1,4 @@
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-
-.nav.logout {
-  margin-left: auto;
-}
-
-.nav.nav-admin {
-  height: 35px;
-  padding: 15px;
-  line-height: 35px;
-  colors: #ffffff;
+.navbar-custom {
   background-color: #4293e6;
   margin-bottom: 40px;
-}
-
-.nav-admin.title {
-  font-size: 140%;
-  font-weight: bold;
-}
-
-.nav-admin.user {
-  float: right;
-}
-
-.nav-admin.user-email {
-  text-decoration: underline;
-}
-
-.nav.nav-admin {
-  color: #ffffff;
 }

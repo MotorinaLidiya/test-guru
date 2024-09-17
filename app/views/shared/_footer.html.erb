@@ -1,13 +1,17 @@
-<footer>
-  <p class="center-text"><%= current_year %></p>
-
-  <p class="center-text"> Автор проекта: Моторина Лидия </p>
-
-  <p class="center-text">
-    <%= github_url('MotorinaLidiya', 'test-guru') %> — платформа для создания тестов и управления ими
-  </p>
-
-  <p class="center-text">
-    <%= link_to 'Учебный проект в онлайн-школе Thinknetica', 'https://thinknetica.com', target: "_blank", rel: "nofollow noopener" %>
-  </p>
-</footer>
+<nav class="mt-5 bg-light text-center py-3">
+    <footer>
+      <div class="mb-2">
+        <%= current_year %>
+      </div>
+      <div class="mb-2">
+        Автор проекта: Моторина Лидия
+      </div>
+      <div class="mb-2">
+        <%= github_url('MotorinaLidiya', 'test-guru') %> — платформа для создания тестов и управления ими
+      </div>
+      <div>
+        <%= link_to 'Учебный проект в онлайн-школе Thinknetica', 'https://thinknetica.com', target: "_blank",
+        rel: "nofollow noopener", class: "text-dark" %>
+      </div>
+    </footer>
+</nav>

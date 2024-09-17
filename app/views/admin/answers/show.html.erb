@@ -1,13 +1,13 @@
-<h2><%= @answer.question.body %></h2>
+<h3><%= @answer.question.body %></h3>
 
-<p>
+<p class="mt-4 fs-5">
   <b><%= t('.answer') %></b>
   <%= @answer.body %>
 </p>
 
-<p>
+<p class="fs-5">
   <b><%= t('.status') %></b>
   <%= @answer.correct %>
 </p>
 
-<%= button_to t('helpers.button.back'), admin_question_path(@answer.question), method: :get %>
+<%= button_to t('helpers.button.back'), admin_question_path(@answer.question), method: :get, class: "btn btn-light text-custom border" %>

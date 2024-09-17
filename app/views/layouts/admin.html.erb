@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Панель управления | TestGuru</title>
+  <title>Admin Panel | TestGuru</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-<%= render 'admin/nav' %>
-<%= flash_message %>
+<body class="d-flex flex-column min-vh-100">
+  <%= render 'admin/nav' %>
 
-<%= yield %>
+  <div class="container flex-grow-1">
+    <%= flash_message %>
+    <%= yield %>
+  </div>
+
+  <%= render 'shared/footer' %>
 </body>
 </html>
