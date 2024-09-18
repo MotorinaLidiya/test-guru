@@ -1,12 +1,14 @@
-<h1><%= t('.header', title: @test_passage.test.title) %></h1>
+<div class="text-center mt-5">
+  <h2><%= t('.header', title: @test_passage.test.title) %></h2>
 
-<h3>
-  <%= t('test_passages.result.message') %>
-  <span style="color: <%= @test_passage.result_successful? ? 'green' : 'red' %>;">
-    <%= @test_passage.result_message %>
-  </span>
-</h3>
+  <h3>
+    <%= t('test_passages.result.message') %>
+    <span class="<%= @test_passage.result_successful? ? 'text-success' : 'text-danger' %>">
+      <%= @test_passage.result_message %>
+    </span>
+  </h3><br>
 
-<p>
-  <%= button_to t('helpers.button.back_to_tests'), tests_path, method: :get %>
-</p>
+  <div class="mt-4">
+    <%= button_to t('helpers.button.back_to_tests'), tests_path, method: :get, class: 'btn btn-secondary' %>
+  </div>
+</div>

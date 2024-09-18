@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>TestGuru</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -10,22 +13,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-      <div class="container">
-        <% if user_signed_in? %>
-          <div class="nav-container">
-            <h3>Добро пожаловать, <%= current_user.name %> <%= link_to 'Guru', tests_path %></h3>
-            <p class="nav logout"><%= button_to t('helpers.button.logout'), destroy_user_session_path, method: :delete %></p>
-          </div>
-        <% end %>
+  <body class="d-flex flex-column min-vh-100">
+  <div class="mb-5">
+    <%= render 'shared/nav' %>
+  </div>
 
-        <%= flash_message %>
+  <div class="container flex-grow-1">
+    <%= flash_message %>
 
-        <%= yield %>
+    <%= yield %>
+  </div>
 
-        <div class="bottom">
-          <%= render 'shared/footer' %>
-        </div>
-      </div>
+  <%= render 'shared/footer' %>
   </body>
 </html>

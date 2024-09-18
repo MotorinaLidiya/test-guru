@@ -1,8 +1,4 @@
-.center-text {
-  text-align: center;
-}
-
-.styled-table {
+.styled-table-user {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -10,30 +6,30 @@
   text-align: left;
 }
 
-.styled-table thead tr {
+.styled-table-user thead tr {
   background-color: #f4f4f4;
   color: #333;
   border-bottom: 2px solid #ddd;
 }
 
-.styled-table th, .styled-table td {
+.styled-table-user th, .styled-table-user td {
   padding: 12px 15px;
   border: 1px solid #ddd;
 }
 
-.styled-table tbody tr:nth-child(even) {
+.styled-table-user tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.styled-table tbody tr:hover {
+.styled-table-user tbody tr:hover {
   background-color: #f1f1f1;
 }
 
-.styled-table th {
+.styled-table-user th {
   text-align: center;
 }
 
-.styled-table td.center-text {
+.styled-table-user td.center-text {
   text-align: center;
 }
 
@@ -53,4 +49,3 @@ button:hover {
 button:active {
   background-color: #004085;
 }
-

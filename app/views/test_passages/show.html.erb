@@ -1,19 +1,21 @@
-<h1><%= t('.header', title: @test_passage.test.title) %></h1>
-<p>
+<h2 class="mb-3"><%= t('.header', title: @test_passage.test.title) %></h2>
+<p class="mb-4">
   <%= t('.question_status', current: @test_passage.current_question_number, total: @test_passage.test.questions.size) %>
 </p>
 
-<b>
-  <%= @test_passage.current_question.body %>
-</b>
+<h3 class="mb-3"><%= @test_passage.current_question.body %></h3>
 
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
-  <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
-    <p>
-      <%= b.check_box id: "answer_ids_#{b.object.id}" %>
-      <%= b.label %>
-    </p>
-  <% end %>
+  <div class="form-group">
+    <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
+      <div class="form-check mb-3">
+        <%= b.check_box id: "answer_ids_#{b.object.id}" %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
 
-  <p><%= form.submit t('helpers.submit.test_passages.next')%></p>
+  <div class="mt-4">
+    <p><%= form.submit t('helpers.submit.test_passages.next'), class: "btn btn-secondary" %></p>
+  </div>
 <% end %>

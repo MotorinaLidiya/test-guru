@@ -1,0 +1,22 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <%= link_to 'TestGuru', root_path, class: 'navbar-brand fs-2' %>
+
+    <span class="navbar-text d-flex justify-content-end align-items-center">
+      <% if user_signed_in? %>
+        <div>
+          <div class="d-flex align-items-center">
+            <span class="me-2 text-dark">
+              Добро пожаловать, <%= current_user.first_name || current_user.email %>
+              <%= link_to 'Guru', tests_path, class: 'me-3' %>
+            </span>
+            <%= button_to t('helpers.button.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+          </div>
+        <% else %>
+          <%= link_to "Log in", new_session_path(resource_name), class: 'me-3' %>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-primary text-white' %>
+        </div>
+      <% end %>
+    </span>
+  </div>
+</nav>

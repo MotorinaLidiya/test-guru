@@ -1,8 +1,9 @@
-<h1><%= t('.header') %></h1>
-<p>
+<h2><%= t('.header') %></h2>
+
+<p class="mt-4">
   <%= @question.body %>
 </p>
 
 <%= render 'form' %>
 
-<%= button_to t('helpers.button.back'), admin_question_path(@question), method: :get %>
+<%= button_to t('helpers.button.back'), admin_question_path(@question), method: :get, class: "btn btn-light text-custom border" %>

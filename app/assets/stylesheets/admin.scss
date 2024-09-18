@@ -1,0 +1,29 @@
+.styled-table-admin {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+
+  thead tr {
+    background-color: #4293e6;
+    color: #fff;
+  }
+
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+
+  tbody tr:hover {
+    background-color: #d0e6ff;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  td.center-text {
+    text-align: center;
+  }
+}

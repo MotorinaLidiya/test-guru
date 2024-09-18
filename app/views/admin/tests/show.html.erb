@@ -1,11 +1,13 @@
-<h1><%= @test.title %></h1>
+<h2><%= @test.title %></h2>
 
-<div class="padding-10"><%= button_to t('helpers.button.add_question'), new_admin_test_question_path(@test), method: :get %></div>
+<div class="padding-10"><%= button_to t('helpers.button.add_question'), new_admin_test_question_path(@test), method: :get,
+class: "btn custom-button" %></div>
 
 <ul>
   <%= render @questions %>
 </ul>
 
-<div class="padding-10"><%= button_to t('helpers.button.modify_test'), edit_admin_test_path, method: :get %></div>
-<div class="padding-10"><%= button_to t('helpers.button.delete_test'), admin_test_path(@test), method: :delete, data: { confirm: 'Вы уверены?' } %></div>
-<div class="padding-10"><%= button_to t('helpers.button.back'), admin_tests_path, method: :get %></div>
+<div class="padding-10"><%= button_to t('helpers.button.modify_test'), edit_admin_test_path, method: :get, class: "btn btn-light text-custom border" %></div>
+<div class="padding-10"><%= button_to t('helpers.button.delete_test'), admin_test_path(@test),
+method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-light text-custom border" %></div>
+<div class="padding-10"><%= button_to t('helpers.button.back'), admin_tests_path, method: :get, class: "btn btn-light text-custom border" %></div>
