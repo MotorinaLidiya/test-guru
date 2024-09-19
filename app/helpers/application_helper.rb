@@ -11,7 +11,7 @@ module ApplicationHelper
                     else "alert alert-secondary"
                     end
 
-      content_tag :div, message, class: alert_class
+      content_tag :div, message.html_safe, class: alert_class
     end.join.html_safe
   end
 end

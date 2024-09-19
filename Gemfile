@@ -22,17 +22,23 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#AUTH
-
+# AUTH
 gem 'devise', '~> 4.0'
+
+# NETWORKING
+gem 'octokit'
+gem 'dotenv-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+# LOCALIZATION
 gem 'rails-i18n', '~> 6.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# UI
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.3.3'
 

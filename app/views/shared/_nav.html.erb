@@ -7,7 +7,7 @@
         <div>
           <div class="d-flex align-items-center">
             <span class="me-2 text-dark">
-              Добро пожаловать, <%= current_user.first_name || current_user.email %>
+              <%= t('admin.nav.welcome') %><%= current_user.first_name || current_user.email %>
               <%= link_to 'Guru', tests_path, class: 'me-3' %>
             </span>
             <%= button_to t('helpers.button.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>

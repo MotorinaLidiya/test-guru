@@ -1,12 +1,13 @@
 <nav class="navbar navbar-light text-white navbar-custom">
   <div class="container">
-    <b class="navbar-brand text-white">
-      Панель управления |
-      <%= link_to 'TestGuru', admin_tests_path, class: 'navbar-brand text-white' %>
+    <b class="navbar-brand text-white p-1">
+      <%= t('.panel') %> |
+      <%= link_to 'TestGuru', admin_tests_path, class: 'navbar-brand text-white' %>|
+      <%= link_to 'Gists', admin_gists_path, class: 'navbar-brand text-white' %>
     </b>
 
     <span class="navbar-text d-flex align-items-center">
-      <b class="me-4 text-white">Добро пожаловать, <%= current_user.first_name || current_user.email %>!</b>
+      <b class="me-4 text-white"><%= t('.welcome') %><%= current_user.first_name || current_user.email %>!</b>
 
       <%= button_to t('helpers.button.logout'), destroy_user_session_path, method: :delete, class: "btn btn-light text-custom" %>
     </span>
