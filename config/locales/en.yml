@@ -109,6 +109,9 @@ en:
         question: "Question"
         url: "Gist URL"
         email: "User Email"
+      create:
+        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist was successfully created!</a>"
+        failure: "An error occured while saving gist"
 
   test_passages:
     result:
@@ -117,9 +120,6 @@ en:
     show:
       header: "Passing the test: %{title}."
       question_status: "Question %{current} of %{total}"
-    gist:
-      success: "Gist was successfully created!"
-      failure: "An error occured while saving gist"
 
   gist_question_service:
     description: "A question about %{title} from TestGuru"

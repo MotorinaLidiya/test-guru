@@ -109,6 +109,9 @@ ru:
         question: "Вопрос"
         url: "Адрес Gist"
         email: "Email Пользователя"
+      create:
+        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist успешно сохранен!</a>"
+        failure: "Во время сохранения gist произошла ошибка"
 
   test_passages:
     result:
@@ -117,9 +120,6 @@ ru:
     show:
       header: "Прохождение теста: %{title}."
       question_status: "Вопрос %{current} из %{total}"
-    gist:
-      success: 'Gist успешно сохранен!'
-      failure: "Во время сохранения gist произошла ошибка"
 
   gist_question_service:
     description: "Вопрос из теста: %{title} от TestGuru"

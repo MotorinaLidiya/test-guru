@@ -1,22 +1,27 @@
 class GistQuestionService
-  def initialize(test_passage, client: nil)
+  include Dry::Monads[:result]
+
+  def initialize(test_passage, client: default_client)
     @test_passage = test_passage
     @question = test_passage.current_question
     @test = @question.test
-    @client = client || GitHubClient.new
+    @client = client
     @user = test_passage.user
   end
 
   def call
     result = @client.create_gist(gist_params)
-
-    return unless result
-
-    Gist.create!(
+    gist = Gist.create(
       question: @question,
       url: result[:html_url],
       user: @user
     )
+
+    return Failure() if gist.blank?
+
+    Success(gist)
+  rescue Faraday::ConnectionFailed
+    return Failure()
   end
 
   private
@@ -38,7 +43,7 @@ class GistQuestionService
     content.join("\n")
   end
 
-  def find_user
-    TestPassage.find_by(test_id: @test.id)&.user
+  def default_client
+    Octokit::Client.new(access_token: ENV.fetch('GITHUB_ACCESS_TOKEN'))
   end
 end

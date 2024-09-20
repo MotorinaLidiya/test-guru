@@ -28,7 +28,7 @@ gem 'devise', '~> 4.0'
 # NETWORKING
 gem 'octokit'
 gem 'dotenv-rails'
-
+gem 'dry-monads'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,8 +1,6 @@
-require_relative '../services/gist_question_service'
-
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_test_passage, only: %i[show update result gist]
+  before_action :set_test_passage, only: %i[show update result]
 
   def show
     @test_passage = current_user.test_passages.find(params[:id])
@@ -19,18 +17,6 @@ class TestPassagesController < ApplicationController
     else
       render :show
     end
-  end
-
-  def gist
-    result = GistQuestionService.new(@test_passage).call
-
-    if result.present? && result.url.present?
-      flash[:notice] = "<a href=\"#{result.url}\" target=\"_blank\">#{t('.success')}</a>"
-    else
-      flash[:alert] = t('.failure')
-    end
-
-    redirect_to @test_passage
   end
 
   private
