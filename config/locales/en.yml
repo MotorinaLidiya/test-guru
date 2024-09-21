@@ -38,7 +38,8 @@ en:
       modify_answer: "Modify answer"
       delete_answer: "Delete answer"
       open: "Open"
-      logout: "Log out"
+      logout: "Log Out"
+      gist: "Gist Question"
     test_levels:
       easy: "easy"
       medium: "medium"
@@ -99,14 +100,29 @@ en:
         success: "Question was successfully deleted."
       show:
         title: "Answers:"
+    nav:
+      welcome: "Welcome, "
+      panel: "Control Panel"
+    gists:
+      index:
+        header: "All Gists"
+        question: "Question"
+        url: "Gist URL"
+        email: "User Email"
+      create:
+        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist was successfully created!</a>"
+        failure: "An error occured while saving gist"
 
   test_passages:
     result:
       header: "Test %{title} was successfully completed!"
       message: "Your result: "
     show:
-      header: "Passing the test %{title}."
+      header: "Passing the test: %{title}."
       question_status: "Question %{current} of %{total}"
+
+  gist_question_service:
+    description: "A question about %{title} from TestGuru"
 
   shared:
     errors:
