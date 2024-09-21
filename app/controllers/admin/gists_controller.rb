@@ -10,7 +10,7 @@ class Admin::GistsController < Admin::BaseController
     result = GistQuestionService.new(test_passage).call
 
     if result.success?
-      flash[:notice] = t('.success_html', url: result.value![:url])
+      flash[:notice] = t('.success_html', url: result.value![:html_url])
     else
       flash[:alert] = t('.failure')
     end

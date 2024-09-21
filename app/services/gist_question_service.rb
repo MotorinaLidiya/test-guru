@@ -19,7 +19,7 @@ class GistQuestionService
 
     return Failure() if gist.blank?
 
-    Success(gist)
+    Success(result)
   rescue Faraday::ConnectionFailed
     return Failure()
   end
