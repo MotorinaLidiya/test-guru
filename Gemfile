@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # UI
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.3.3'
+gem 'octicons_helper'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
