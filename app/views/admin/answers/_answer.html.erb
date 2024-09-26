@@ -6,6 +6,6 @@
   <%= button_to t('helpers.button.modify_answer'), edit_admin_answer_path(answer), method: :get, form: { style: 'display: inline;' },
   class: "btn btn-light text-custom btn-sm border me-2"  %>
   <%= button_to t('helpers.button.delete_answer'), admin_answer_path(answer), method: :delete, form: { style: 'display: inline;' },
-  class: "btn btn-light text-custom btn-sm border"  %>
+  data: { confirm: 'Вы уверены?' }, class: "btn btn-light text-custom btn-sm border"  %>
 </p>
 </li>

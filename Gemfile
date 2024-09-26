@@ -39,7 +39,6 @@ gem 'rails-i18n', '~> 6.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # UI
-gem 'jquery-rails'
 gem 'bootstrap', '~> 5.3.3'
 gem 'octicons_helper'
 

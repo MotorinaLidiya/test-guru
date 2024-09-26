@@ -12,7 +12,7 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
+    if correct_answer?(answer_ids) && current_question.answers.any?
       self.correct_questions += 1
     end
 
@@ -27,8 +27,11 @@ class TestPassage < ApplicationRecord
 
   def result_count
     total_questions = test.questions.size
+    empty_questions = test.questions.left_outer_joins(:answers).where(answers: { id: nil }).count
 
-    (correct_questions.to_f / total_questions * 100).round
+    questions_with_answers = total_questions - empty_questions
+
+    (correct_questions.to_f / questions_with_answers * 100).round
   end
 
   def result_message

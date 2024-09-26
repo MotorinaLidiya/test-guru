@@ -77,6 +77,8 @@ en:
         header: "Create Test"
       edit:
         header: "Edit Test %{test}"
+      form_inline:
+        submit: "OK"
     answers:
       create:
         success: "Answer was successfully created."

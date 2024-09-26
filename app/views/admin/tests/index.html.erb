@@ -6,6 +6,8 @@
     <%= button_to t('helpers.button.add_test'), new_admin_test_path, method: :get, class: "btn custom-button" %>
   </p>
 
+  <%= render 'shared/errors', resource: @test %>
+
   <table class="styled-table-admin">
     <thead>
     <tr>
