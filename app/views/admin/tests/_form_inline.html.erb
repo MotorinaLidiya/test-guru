@@ -1,0 +1,14 @@
+<div class="col col-md-12" style="display: none" id="form-container-<%= test.id %>">
+  <%= form_with model: [:admin, test],
+                url: update_inline_admin_test_path(test),
+                local: true,
+                class: 'form-inline d-flex align-items-center',
+                data: { test_id: test.id } do |f| %>
+    <div class="col col-md-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="col col-md-2 d-flex justify-content-end">
+      <%= f.submit t('.submit'), class: 'btn btn-outline-primary text-custom btn-sm' %>
+    </div>
+  <% end %>
+</div>

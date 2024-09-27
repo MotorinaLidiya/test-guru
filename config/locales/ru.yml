@@ -77,6 +77,8 @@ ru:
         header: "Создание Теста"
       edit:
         header: "Редактировать Тест %{test}"
+      form_inline:
+        submit: "ОК"
     answers:
       create:
         success: "Ответ был успешно создан."
