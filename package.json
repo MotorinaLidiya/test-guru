@@ -25,5 +25,8 @@
   },
   "scripts": {
     "build": "node --openssl-legacy-provider ./node_modules/webpack/bin/webpack.js --mode production"
+  },
+  "engines": {
+    "node": ">=20.7.0"
   }
 }
