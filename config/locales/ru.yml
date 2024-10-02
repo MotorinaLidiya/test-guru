@@ -12,6 +12,8 @@ ru:
         save: "Сохранить"
       answers:
         save: "Сохранить"
+      feedbacks:
+        send: "Отправить"
     label:
       test:
         title: "Название"
@@ -40,6 +42,7 @@ ru:
       open: "Открыть"
       logout: "Выйти из аккаунта"
       gist: "Вопрос в Gist"
+      feedback: "Поделиться обратной связью"
     test_levels:
       easy: "легкий"
       medium: "средний"
@@ -137,3 +140,11 @@ ru:
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
+
+  user_mailer:
+    feedback_email:
+      subject: "Новый отзыв о тесте"
+
+  feedbacks:
+    create:
+      success: "Отзыв успешно отправлен"

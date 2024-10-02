@@ -12,6 +12,8 @@ en:
         save: "Save"
       answers:
         save: "Save"
+      feedbacks:
+        send: "Send"
     label:
       test:
         title: "Title"
@@ -40,6 +42,7 @@ en:
       open: "Open"
       logout: "Log Out"
       gist: "Gist Question"
+      feedback: "Share Feedback with Author"
     test_levels:
       easy: "easy"
       medium: "medium"
@@ -135,3 +138,11 @@ en:
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
+
+  user_mailer:
+    feedback_email:
+      subject: "New feedback from TestGuru"
+
+  feedbacks:
+    create:
+      success: "Feedback was successfully send"

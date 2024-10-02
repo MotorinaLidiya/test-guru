@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_18_215805) do
+ActiveRecord::Schema.define(version: 2024_10_02_135943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2024_09_18_215805) do
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "author_email", null: false
+    t.text "message", null: false
+    t.bigint "test_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["test_id"], name: "index_feedbacks_on_test_id"
   end
 
   create_table "gists", force: :cascade do |t|
@@ -100,6 +110,7 @@ ActiveRecord::Schema.define(version: 2024_09_18_215805) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "feedbacks", "tests"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
