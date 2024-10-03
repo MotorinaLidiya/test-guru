@@ -1,17 +1,16 @@
 class FeedbacksController < ApplicationController
+  before_action :set_test_passage, only: %i[new create]
+
   def new
     @feedback = Feedback.new
-    @test_passage = TestPassage.find(params[:test_passage_id])
-    @test = @test_passage.test
   end
 
   def create
-    @test_passage = TestPassage.find(params[:test_passage_id])
     @feedback = Feedback.new(feedback_params)
     @feedback.name = current_user.name || current_user.email
 
     @test = Test.find(feedback_params[:test_id])
-    @feedback.author_email = @test.author.email
+    @feedback.author_email = @test_passage.test.author.email
 
     if @feedback.save
       UserMailer.feedback_email(@feedback, @test).deliver_now
@@ -22,6 +21,10 @@ class FeedbacksController < ApplicationController
   end
 
   private
+
+  def set_test_passage
+    @test_passage = TestPassage.find(params[:test_passage_id])
+  end
 
   def feedback_params
     params.require(:feedback).permit(:message, :test_id)

@@ -1,20 +1,22 @@
 <div class="col col-md-12">
-  <h2>Обратная связь к тесту: <%= @test.title %></h2>
+  <h2>Обратная связь к тесту: <%= @test_passage.test.title %></h2>
   <%= render 'shared/errors', resource: @feedback %>
 
   <div class="col col-md-8">
-      <%= form_with model: @feedback, url: test_passage_feedbacks_path(@test_passage), local: true do |f| %>
-        <%= f.hidden_field :test_id, value: @test.id %>
+    <div>Кому: <%= @test_passage.test.author.email %></div>
 
-        <div>
-          <%= f.label :message, 'Ваш отзыв:' %>
-          <p><%= f.text_area :message, required: true, rows: 5, cols: 40 %></p>
-        </div>
+    <%= form_with model: @feedback, url: test_passage_feedbacks_path(@test_passage), local: true do |f| %>
+      <%= f.hidden_field :test_id, value: @test_passage.test.id %>
 
-        <div class="form-group">
-          <%= f.submit t('helpers.submit.feedbacks.send'), class: 'btn btn-secondary' %>
-        </div>
-      <% end %>
+      <div>
+        <%= f.label :message, 'Ваш отзыв:' %>
+        <p><%= f.text_area :message, required: true, rows: 5, cols: 40 %></p>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit t('helpers.submit.feedbacks.send'), class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
   </div>
 
   <div class="mt-3">
