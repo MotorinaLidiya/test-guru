@@ -1,15 +1,15 @@
 <div class="col col-md-12">
-  <h2>Обратная связь к тесту: <%= @test_passage.test.title %></h2>
+  <h2><%= t('.header', test_title: @test_passage.test.title) %></h2>
   <%= render 'shared/errors', resource: @feedback %>
 
   <div class="col col-md-8">
-    <div>Кому: <%= @test_passage.test.author.email %></div>
+    <div><%= t('.recipient', email: @test_passage.test.author.email) %></div>
 
     <%= form_with model: @feedback, url: test_passage_feedbacks_path(@test_passage), local: true do |f| %>
       <%= f.hidden_field :test_id, value: @test_passage.test.id %>
 
       <div>
-        <%= f.label :message, 'Ваш отзыв:' %>
+        <%= f.label :message, t('.message_label') %>
         <p><%= f.text_area :message, required: true, rows: 5, cols: 40 %></p>
       </div>
 

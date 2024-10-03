@@ -1,18 +1,18 @@
 <div class="row justify-content-center mt-3">
   <div class="col col-md-4">
-    <h2>Enter the Guru Gates</h2>
+    <h2><%= t('.header') %></h2>
 
     <div class="card border-primary">
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-group">
             <p>
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Enter email' %>
+              <%= f.label :email, t('.email_label') %><br />
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('.email_placeholder') %>
             </p>
 
             <p>
-              <%= f.label :password %>
+              <%= f.label :password, t('.password_label') %>
               <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
             </p>
 
@@ -20,12 +20,12 @@
               <div class="form-check">
                 <%= f.label :remember_me, class: 'form-check-label' do %>
                   <%= f.check_box :remember_me, class: 'form-check-input' %>
-                  Remember me
+                  <%= t('.remember_me_label') %>
                 <% end %>
               </div>
             <% end %>
 
-            <%= f.submit "Enter", class: 'btn btn-primary' %>
+            <%= f.submit t('.enter_button'), class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>

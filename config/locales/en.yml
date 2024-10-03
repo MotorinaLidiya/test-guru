@@ -148,3 +148,78 @@ en:
   feedbacks:
     create:
       success: "Feedback was successfully send"
+    new:
+      header: "Feedback for test: %{test_title}"
+      recipient: "To: %{email}"
+      message_label: "Your feedback:"
+
+  devise:
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        email_label: "Email:"
+        submit_button: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome, %{email}!"
+        confirm_message: "You can confirm your account email through the link below:"
+        confirm_button: "Confirm my account"
+      email_changed:
+        greeting: "Hello, %{email}!"
+        notify_change: "We're contacting you to notify you that your email is being changed to %{new_email}."
+        notify_changed: "We're contacting you to notify you that your email has been changed to %{new_email}."
+      password_change:
+        greeting: "Hello, %{email}!"
+        notify_change: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        greeting: "Hello, %{email}!"
+        request_change: "Someone has requested a link to change your password. You can do this through the link below."
+        change_button: "Change my password"
+        ignore_request: "If you didn't request this, please ignore this email."
+        no_change: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        greeting: "Hello, %{email}!"
+        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        unlock_link: "Click the link below to unlock your account:"
+        unlock_button: "Unlock my account"
+    registrations:
+      edit:
+        header: "Edit %{resource_name}"
+        email_label: "Email"
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        password_label: "Password"
+        password_hint: "(leave blank if you don't want to change it)"
+        password_confirmation_label: "Password confirmation"
+        current_password_label: "Current password"
+        current_password_hint: "(we need your current password to confirm your changes)"
+        update_button: "Update"
+        cancel_account_header: "Cancel my account"
+        cancel_account_text: "Unhappy? Cancel my account"
+        back_link: "Back"
+      new:
+        header: "Become a Guru"
+        first_name_label: "First Name"
+        last_name_label: "Last Name"
+        email_label: "Email"
+        email_placeholder: "Enter email"
+        password_label: "Password"
+        password_confirmation_label: "Password confirmation"
+        minimum_password_length: "(minimum %{count} characters)"
+        sign_up_button: "Sign Up"
+        back_link: "Back"
+    sessions:
+      new:
+        header: "Enter the Guru Gates"
+        email_label: "Email"
+        email_placeholder: "Enter email"
+        password_label: "Password"
+        remember_me_label: "Remember me"
+        enter_button: "Enter"
+        back_link: "Back"
+    shared:
+      links:
+        forgot_password: "Forgot your password?"
+        confirmation_instructions: "Didn't receive confirmation instructions?"
+        unlock_instructions: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with %{provider}"
+
