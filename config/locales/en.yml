@@ -114,9 +114,11 @@ en:
         question: "Question"
         url: "Gist URL"
         email: "User Email"
-      create:
-        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist was successfully created!</a>"
-        failure: "An error occured while saving gist"
+
+  gists:
+    create:
+      success_html: "<a href=\"%{url}\" target=\"_blank\">Gist was successfully created!</a>"
+      failure: "An error occured while saving gist"
 
   test_passages:
     result:

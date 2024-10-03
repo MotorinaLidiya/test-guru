@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 
     resources :gists, only: %i[index create]
   end
+
+  resources :gists, only: [:create]
 end

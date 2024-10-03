@@ -114,9 +114,11 @@ ru:
         question: "Вопрос"
         url: "Адрес Gist"
         email: "Email Пользователя"
-      create:
-        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist успешно сохранен!</a>"
-        failure: "Во время сохранения gist произошла ошибка"
+
+  gists:
+    create:
+      success_html: "<a href=\"%{url}\" target=\"_blank\">Gist успешно сохранен!</a>"
+      failure: "Во время сохранения gist произошла ошибка"
 
   test_passages:
     result:
