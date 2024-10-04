@@ -4,7 +4,8 @@ categories.map! { |category| Category.find_or_create_by!(title: category) }
 users = [
   { name: 'Lidia', type: 'Admin', email: 'lidia@gmail.com', password: '1a2b3c4d5e', first_name: 'Лидия' , last_name: 'Моторина' },
   { name: 'Max', type: 'User', email: 'max101@yandex.ru', password: 'pass12word' },
-  { name: 'Alex', type: 'User', email: 'alex.sokolov@mail.ru', password: 'rubyonrails' }
+  { name: 'Alex', type: 'User', email: 'alex.sokolov@mail.ru', password: 'rubyonrails' },
+  { name: 'Lida2', type: 'Admin', email: ENV['SMTP_USERNAME'], password: '123123', first_name: 'Лида' , last_name: 'Админ' }
 ]
 users.map! do |user_attributes|
   User.find_or_create_by!(user_attributes.except(:password)) do |user|
@@ -14,9 +15,9 @@ users.map! do |user_attributes|
 end
 
 tests = [
-  { title: 'Основы Rails', level: 1, category: categories[0], author: users[0] },
-  { title: 'Основы Ruby', level: 2, category: categories[1], author: users[0] },
-  { title: 'Основы SQL', level: 3, category: categories[2], author: users[0] }
+  { title: 'Основы Rails', level: 4, category: categories[0], author: users[3] },
+  { title: 'Основы Ruby', level: 5, category: categories[1], author: users[3] },
+  { title: 'Основы SQL', level: 6, category: categories[2], author: users[3] }
 ]
 tests.map! { |test_attributes| Test.find_or_create_by!(test_attributes) }
 

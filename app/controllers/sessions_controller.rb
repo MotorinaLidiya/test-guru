@@ -1,6 +1,8 @@
 class SessionsController < Devise::SessionsController
   def create
     super
-    flash[:notice] = "Привет, #{current_user.last_name} #{current_user.first_name}!" unless current_user.is_a?(Admin)
+    unless current_user.is_a?(Admin)
+      flash[:notice] = "Привет, #{current_user.last_name.presence || 'Гуру'} #{current_user.first_name.presence || ''}!".strip
+    end
   end
 end

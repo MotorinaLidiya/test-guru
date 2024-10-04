@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       get :result
       post :gist
     end
+
+    resources :feedbacks, only: %i[new create]
   end
 
   namespace :admin do
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
     end
 
     resources :gists, only: %i[index create]
-
   end
+
+  resources :gists, only: [:create]
 end

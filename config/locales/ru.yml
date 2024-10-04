@@ -12,6 +12,8 @@ ru:
         save: "Сохранить"
       answers:
         save: "Сохранить"
+      feedbacks:
+        send: "Отправить"
     label:
       test:
         title: "Название"
@@ -40,6 +42,7 @@ ru:
       open: "Открыть"
       logout: "Выйти из аккаунта"
       gist: "Вопрос в Gist"
+      feedback: "Поделиться обратной связью"
     test_levels:
       easy: "легкий"
       medium: "средний"
@@ -111,9 +114,11 @@ ru:
         question: "Вопрос"
         url: "Адрес Gist"
         email: "Email Пользователя"
-      create:
-        success_html: "<a href=\"%{url}\" target=\"_blank\">Gist успешно сохранен!</a>"
-        failure: "Во время сохранения gist произошла ошибка"
+
+  gists:
+    create:
+      success_html: "<a href=\"%{url}\" target=\"_blank\">Gist успешно сохранен!</a>"
+      failure: "Во время сохранения gist произошла ошибка"
 
   test_passages:
     result:
@@ -137,3 +142,85 @@ ru:
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
+
+  user_mailer:
+    feedback_email:
+      subject: "Новый отзыв о тесте"
+
+  feedbacks:
+    create:
+      success: "Отзыв успешно отправлен"
+    new:
+      header: "Обратная связь к тесту: %{test_title}"
+      recipient: "Кому: %{email}"
+      message_label: "Ваш отзыв:"
+
+  devise:
+    confirmations:
+      new:
+        title: "Отправить инструкции повторно"
+        email_label: "Почтовый адрес:"
+        submit_button: "Отправить инструкции повторно"
+    mailer:
+      confirmation_instructions:
+        welcome: "Добро пожаловать, %{email}!"
+        confirm_message: "Вы можете подтвердить свой адрес электронной почты, перейдя по ссылке ниже:"
+        confirm_button: "Подтвердить мой аккаунт"
+      email_changed:
+        greeting: "Здравствуйте, %{email}!"
+        notify_change: "Мы уведомляем вас, что ваш электронный адрес изменяется на %{new_email}."
+        notify_changed: "Мы уведомляем вас, что ваш электронный адрес был изменен на %{new_email}."
+      password_change:
+        greeting: "Здравствуйте, %{email}!"
+        notify_change: "Мы уведомляем вас, что ваш пароль был изменен."
+      reset_password_instructions:
+        greeting: "Здравствуйте, %{email}!"
+        request_change: "Кто-то запросил ссылку для смены вашего пароля. Вы можете сделать это, перейдя по ссылке ниже."
+        change_button: "Сменить мой пароль"
+        ignore_request: "Если вы не запрашивали это, просто проигнорируйте это письмо."
+        no_change: "Ваш пароль не изменится, пока вы не перейдёте по ссылке выше и не создадите новый."
+      unlock_instructions:
+        greeting: "Здравствуйте, %{email}!"
+        account_locked: "Ваш аккаунт был заблокирован из-за чрезмерного количества неудачных попыток входа."
+        unlock_link: "Нажмите на ссылку ниже, чтобы разблокировать свой аккаунт:"
+        unlock_button: "Разблокировать мой аккаунт"
+    registrations:
+      edit:
+        header: "Редактировать %{resource_name}"
+        email_label: "Электронная почта"
+        waiting_confirmation: "В данный момент ожидается подтверждение для: %{email}"
+        password_label: "Пароль"
+        password_hint: "(оставьте пустым, если не хотите менять)"
+        password_confirmation_label: "Подтверждение пароля"
+        current_password_label: "Текущий пароль"
+        current_password_hint: "(нам нужен ваш текущий пароль для подтверждения изменений)"
+        update_button: "Обновить"
+        cancel_account_header: "Отменить мой аккаунт"
+        cancel_account_text: "Не довольны? Отменить мой аккаунт"
+        back_link: "Назад"
+      new:
+        header: "Станьте Гуру"
+        first_name_label: "Имя"
+        last_name_label: "Фамилия"
+        email_label: "Электронная почта"
+        email_placeholder: "Введите электронную почту"
+        password_label: "Пароль"
+        password_confirmation_label: "Подтверждение пароля"
+        minimum_password_length: "(минимум %{count} символов)"
+        sign_up_button: "Зарегистрироваться"
+        back_link: "Назад"
+    sessions:
+      new:
+        header: "Войдите в Тест Гуру"
+        email_label: "Электронная почта"
+        email_placeholder: "Введите электронную почту"
+        password_label: "Пароль"
+        remember_me_label: "Запомнить меня"
+        enter_button: "Войти"
+        back_link: "Назад"
+    shared:
+      links:
+        forgot_password: "Забыли пароль?"
+        confirmation_instructions: "Не получили инструкции для подтверждения?"
+        unlock_instructions: "Не получили инструкции для разблокировки?"
+        sign_in_with: "Войти с помощью %{provider}"
