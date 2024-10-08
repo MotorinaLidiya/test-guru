@@ -9,11 +9,15 @@ en:
       test_passages:
         next: "Next"
       questions:
-        save: "Save"
+        save: "Save question"
       answers:
-        save: "Save"
+        save: "Save answer"
+      categories:
+        save: "Save category"
       feedbacks:
         send: "Send"
+      badges:
+        save: "Save badge"
     label:
       test:
         title: "Title"
@@ -32,8 +36,11 @@ en:
       back: "Back"
       add_test: "New Test"
       add_question: "New Question"
+      add_category: "New Category"
+      category_list: "List of Category"
       add_answer: "New Answer"
-      modify_test: "Modify Test"
+      modify_test: "Edit Test"
+      modify_test_title: "Modify Title"
       delete_test: "Delete Test"
       modify_question: "Modify question"
       delete_question: "Delete question"
@@ -52,6 +59,7 @@ en:
     index:
       header: "Tricky Tests"
       title: "Title"
+      category: "Category"
       level: "Level"
       questions_quantity: "Number of Questions"
       author: "Author"
@@ -70,6 +78,7 @@ en:
       index:
         header: "Tricky Tests to Modify"
         title: "Title"
+        category: "Category"
         level: "Level"
         questions_quantity: "Number of Questions"
         author: "Author"
@@ -114,6 +123,35 @@ en:
         question: "Question"
         url: "Gist URL"
         email: "User Email"
+    categories:
+      index:
+        header: "All categories"
+      new:
+        header_new: "Add category"
+      edit:
+        header_edit: "Edit category"
+      create:
+        success: "Category was successfully created."
+      update:
+        success: "Category was successfully updated."
+      destroy:
+        success: "Category was successfully deleted."
+    badges:
+      index:
+        header: "All badges"
+      create:
+        success: "Badge was successfully created."
+      update:
+        success: "Badge was successfully updated."
+      destroy:
+        success: "Badge was successfully deleted."
+
+  badges:
+    index:
+      header: "All badges"
+    my:
+      header: "My badges"
+      empty: "You have no badges"
 
   gists:
     create:

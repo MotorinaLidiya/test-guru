@@ -9,11 +9,15 @@ ru:
       test_passages:
         next: "Далее"
       questions:
-        save: "Сохранить"
+        save: "Сохранить Вопрос"
       answers:
-        save: "Сохранить"
+        save: "Сохранить Ответ"
+      categories:
+        save: "Сохранить Категорию"
       feedbacks:
         send: "Отправить"
+      badges:
+        save: "Сохранить Бэйдж"
     label:
       test:
         title: "Название"
@@ -32,8 +36,11 @@ ru:
       back: "Назад"
       add_test: "Добавить Тест"
       add_question: "Добавить Вопрос"
+      add_category: "Добавить Категорию"
+      category_list: "Список Категорий"
       add_answer: "Добавить Ответ"
       modify_test: "Изменить тест"
+      modify_test_title: "Изменить название"
       delete_test: "Удалить тест"
       modify_question: "Изменить вопрос"
       delete_question: "Удалить вопрос"
@@ -52,6 +59,7 @@ ru:
     index:
       header: "Доступные тесты"
       title: "Название"
+      category: "Категория"
       level: "Уровень"
       questions_quantity: "Количество Вопросов"
       author: "Автор"
@@ -70,6 +78,7 @@ ru:
       index:
         header: "Доступные тесты к редактированию"
         title: "Название"
+        category: "Категория"
         level: "Уровень"
         questions_quantity: "Количество Вопросов"
         author: "Автор"
@@ -114,6 +123,35 @@ ru:
         question: "Вопрос"
         url: "Адрес Gist"
         email: "Email Пользователя"
+    categories:
+      index:
+        header: "Все категории"
+      new:
+        header_new: "Добавить категорию"
+      edit:
+        header_edit: "Изменить категорию"
+      create:
+        success: "Категория была успешно создана."
+      update:
+        success: "Категория была успешно обновлена."
+      destroy:
+        success: "Категория была успешно удалена."
+    badges:
+      index:
+        header: "Все Бэйджи"
+      create:
+        success: "Бэйдж был успешно создан."
+      update:
+        success: "Бэйдж был успешно обновлен."
+      destroy:
+        success: "Бэйдж был успешно удален."
+
+  badges:
+    index:
+      header: "Все Бэйджи"
+    my:
+      header: "Мои Бэйджи"
+      empty: "У вас пока нет бэйджей"
 
   gists:
     create:

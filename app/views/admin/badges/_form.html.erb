@@ -1,0 +1,31 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :title, 'Название бэйджа:' %>
+    <%= form.text_field :title, id: :badge_title, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'Описание бэйджа:' %>
+    <%= form.text_area :description, id: :badge_description, rows: 2, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :image_url, 'URL изображения:' %>
+    <%= form.text_field :image_url, id: :badge_image_url, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :condition, 'Условие получения бейджа:' %>
+    <%= form.text_field :condition, id: :badge_condition, class: 'form-control' %>
+  </p>
+
+  <div class="mt-4">
+    <%= form.submit t('helpers.submit.badges.save'), class: "btn custom-button" %>
+  </div>
+<% end %>
+
+<p>
+  <%= button_to t('helpers.button.back'), admin_badges_path, method: :get, class: "btn btn-outline-primary text-custom" %>
+</p>

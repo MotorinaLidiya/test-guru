@@ -5,7 +5,7 @@ document.addEventListener('turbolinks:load', function() {
     const tbody = table.querySelector('tbody')
     const rows = Array.from(tbody.querySelectorAll('tr'))
 
-    const rowsPerPage = 10
+    const rowsPerPage = 5
     let currentList = 1
 
     const showMoreButton = document.getElementById('showMoreRows')
@@ -20,7 +20,14 @@ document.addEventListener('turbolinks:load', function() {
 
         if (totalRows >= rows.length) {
             showMoreButton && (showMoreButton.style.display = 'none')
-            showLessButton && showLessButton.classList.remove('hide')
+        } else {
+            showMoreButton && (showMoreButton.style.display = 'block')
+        }
+
+        if (currentList > 1) {
+            showLessButton.classList.remove('hide')
+        } else {
+            showLessButton.classList.add('hide')
         }
     }
 

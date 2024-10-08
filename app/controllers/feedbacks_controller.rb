@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[new create]
 
   def new

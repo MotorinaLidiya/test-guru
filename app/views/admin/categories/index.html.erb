@@ -1,0 +1,29 @@
+<div>
+  <h2><%= t('.header') %></h2>
+
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <%= category.title %>
+        <div class="d-flex gap-4 mt-2 mb-2">
+          <%= button_to 'Редактировать',
+                        edit_admin_category_path(category),
+                        method: :get,
+                        class: 'btn btn-outline-primary text-custom btn-sm' %>
+          <%= button_to 'Удалить', admin_category_path(category),
+                    method: :delete,
+                    data: { confirm: 'Вы уверены, что хотите удалить эту категорию?' },
+                    class: 'btn btn-danger btn-sm' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<p class="mt-5">
+  <%= button_to t('helpers.button.add_category'), new_admin_category_path, method: :get, class: "btn custom-button" %>
+</p>
+
+<p>
+  <%= button_to t('helpers.button.back'), admin_tests_path, method: :get, class: "btn btn-outline-primary text-custom" %>
+</p>

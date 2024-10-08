@@ -7,6 +7,8 @@ class TestPassage < ApplicationRecord
 
   before_validation :set_current_question
 
+  after_update :reward_badges, if: :completed?
+
   def completed?
     current_question.nil?
   end
@@ -45,6 +47,20 @@ class TestPassage < ApplicationRecord
 
   def result_successful?
     result_count >= SUCCESS_RATIO
+  end
+
+  def reward_badges
+    badges_awarded = []
+    badges = Badge.includes(:badge_to_users).all
+
+    badges.each do |badge|
+      if badge.reward?(self, user) && user.badge_ids.exclude?(badge.id)
+        BadgeToUser.assign_badge(user, badge)
+        badges_awarded << badge.title
+      end
+    end
+
+    badges_awarded
   end
 
   private
