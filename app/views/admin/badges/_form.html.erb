@@ -2,22 +2,22 @@
   <%= render 'shared/errors', resource: @badge %>
 
   <p>
-    <%= form.label :title, 'Название бэйджа:' %>
+    <%= form.label :title %>
     <%= form.text_field :title, id: :badge_title, class: 'form-control' %>
   </p>
 
   <p>
-    <%= form.label :description, 'Описание бэйджа:' %>
+    <%= form.label :description %>
     <%= form.text_area :description, id: :badge_description, rows: 2, class: 'form-control' %>
   </p>
 
   <p>
-    <%= form.label :image_url, 'URL изображения:' %>
+    <%= form.label :image_url %>
     <%= form.text_field :image_url, id: :badge_image_url, class: 'form-control' %>
   </p>
 
   <p>
-    <%= form.label :condition, 'Условие получения бейджа:' %>
+    <%= form.label :condition %>
     <%= form.text_field :condition, id: :badge_condition, class: 'form-control' %>
   </p>
 

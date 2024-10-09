@@ -13,7 +13,7 @@ class TestPassagesController < ApplicationController
 
     if @test_passage.completed?
       awarded_badges = @test_passage.reward_badges
-      flash[:notice] = "За выполнение теста вы получаете: #{awarded_badges.join(', ')}" if awarded_badges.present?
+      flash[:notice] = t('.badges_awarded', badges: awarded_badges.join(', ')) if awarded_badges.present?
 
       TestsMailer.completed_test(@test_passage).deliver_now if @test_passage.result_successful?
 

@@ -25,7 +25,7 @@ class Admin::BadgesController < Admin::BaseController
 
   def update
     if @badge.update(badge_params)
-      redirect_to admin_badges_path, notice: 'Бэйдж успешно обновлен.'
+      redirect_to admin_badges_path, notice: t('.success')
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class Admin::BadgesController < Admin::BaseController
   def destroy
     @badge.badge_to_users.delete_all
     @badge.destroy
-    redirect_to admin_badges_path, notice: 'Бэйдж успешно удален.'
+    redirect_to admin_badges_path, notice: t('.success')
   end
 
   private

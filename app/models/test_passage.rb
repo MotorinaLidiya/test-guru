@@ -37,9 +37,9 @@ class TestPassage < ApplicationRecord
   def result_message
     percent = result_count
     if percent >= SUCCESS_RATIO
-      "#{percent}% Тест успешно пройден."
+      I18n.t('test_passages.result.success', percent: percent)
     else
-      "#{percent}% Тест не пройден."
+      I18n.t('test_passages.result.fail', percent: percent)
     end
   end
 

@@ -6,11 +6,11 @@
       <li>
         <%= category.title %>
         <div class="d-flex gap-4 mt-2 mb-2">
-          <%= button_to 'Редактировать',
+          <%= button_to t('helpers.button.modify'),
                         edit_admin_category_path(category),
                         method: :get,
                         class: 'btn btn-outline-primary text-custom btn-sm' %>
-          <%= button_to 'Удалить', admin_category_path(category),
+          <%= button_to t('helpers.button.delete'), admin_category_path(category),
                     method: :delete,
                     data: { confirm: 'Вы уверены, что хотите удалить эту категорию?' },
                     class: 'btn btn-danger btn-sm' %>

@@ -7,6 +7,6 @@ class Admin::BaseController < ApplicationController
   private
 
   def admin_required!
-    redirect_to root_path, alert: 'Нет доступа к странице.' unless current_user.is_a?(Admin)
+    redirect_to root_path, alert: t('.no_access') unless current_user.is_a?(Admin)
   end
 end

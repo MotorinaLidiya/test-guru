@@ -28,6 +28,13 @@ en:
       answer:
         body: "Answer"
         correct: "Status"
+      category:
+        title: "Title of category"
+      badge:
+        title: "Title"
+        description: "Description"
+        condition: "Condition"
+        image_url: "URL изображения"
     select:
       prompt: "Select a category"
     button:
@@ -37,6 +44,9 @@ en:
       add_test: "New Test"
       add_question: "New Question"
       add_category: "New Category"
+      add_badge: "New Badge"
+      modify: "Edit"
+      delete: "Delete"
       category_list: "List of Category"
       add_answer: "New Answer"
       modify_test: "Edit Test"
@@ -68,6 +78,8 @@ en:
       empty: "No tests available yet."
 
   admin:
+    base:
+      no_access: 'You do not have access to this page.'
     tests:
       create:
         success: "Test was successfully created."
@@ -106,6 +118,7 @@ en:
         answer: "Answer: "
         status: "Status: "
     questions:
+      not_found: 'Question not found.'
       create:
         success: "Question was successfully created."
       update:
@@ -145,6 +158,10 @@ en:
         success: "Badge was successfully updated."
       destroy:
         success: "Badge was successfully deleted."
+      new:
+        header: "Create Badge"
+      edit:
+        header: "Modify Badge"
 
   badges:
     index:
@@ -162,9 +179,13 @@ en:
     result:
       header: "Test %{title} was successfully completed!"
       message: "Your result: "
+      success: "%{percent}% Test passed successfully."
+      fail: "%{percent}% Test failed."
     show:
       header: "Passing the test: %{title}."
       question_status: "Question %{current} of %{total}"
+    update:
+      badges_awarded: "You have received the following badges for completing the test: %{badges}."
 
   gist_question_service:
     description: "A question about %{title} from TestGuru"

@@ -49,7 +49,7 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def rescue_with_question_not_found
-    render plain: 'Ресурс не найден', status: :not_found
+    render plain: t('admin.questions.not_found'), status: :not_found
   end
 
   def question_params
