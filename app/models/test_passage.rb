@@ -12,9 +12,7 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids) && current_question.answers.any?
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
 
     save!
   end
@@ -45,10 +43,6 @@ class TestPassage < ApplicationRecord
 
   def result_successful?
     result_count >= SUCCESS_RATIO
-  end
-
-  def reward_badges
-    BadgeRewardService.new(self).badge_reward
   end
 
   private

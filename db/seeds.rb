@@ -5,7 +5,7 @@ users = [
   { name: 'Lidia', type: 'Admin', email: 'lidia@gmail.com', password: '1a2b3c4d5e', first_name: 'Лидия' , last_name: 'Моторина' },
   { name: 'Max', type: 'User', email: 'max101@yandex.ru', password: 'pass12word' },
   { name: 'Alex', type: 'User', email: 'alex.sokolov@mail.ru', password: 'rubyonrails' },
-  { name: 'Lida2', type: 'Admin', email: ENV['SMTP_USERNAME'], password: '123123', first_name: 'Лида' , last_name: 'Админ' }
+  { name: 'Lida2', type: 'Admin', email:  ENV.fetch('SMTP_USERNAME'), password: '123123', first_name: 'Лида', last_name: 'Админ' }
 ]
 users.map! do |user_attributes|
   User.find_or_create_by!(user_attributes.except(:password)) do |user|
@@ -63,6 +63,6 @@ badge_to_users = [
   { user: users[1], badge: badges[1] },
   { user: users[1], badge: badges[2] },
   { user: users[1], badge: badges[3] },
-  { user: users[1], badge: badges[4] },
+  { user: users[1], badge: badges[4] }
 ]
 badge_to_users.each { |badge_to_user| BadgeToUser.find_or_create_by!(badge_to_user) }
