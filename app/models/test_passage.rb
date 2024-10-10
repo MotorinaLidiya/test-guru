@@ -35,9 +35,9 @@ class TestPassage < ApplicationRecord
   def result_message
     percent = result_count
     if percent >= SUCCESS_RATIO
-      I18n.t('test_passages.result.success', percent: percent)
+      I18n.t('test_passages.result.success', percent:)
     else
-      I18n.t('test_passages.result.fail', percent: percent)
+      I18n.t('test_passages.result.fail', percent:)
     end
   end
 
@@ -48,11 +48,7 @@ class TestPassage < ApplicationRecord
   private
 
   def set_current_question
-    if new_record?
-      self.current_question = test.questions.first
-    else
-      self.current_question = next_question
-    end
+    self.current_question = new_record? ? test.questions.first : next_question
   end
 
   def set_first_question

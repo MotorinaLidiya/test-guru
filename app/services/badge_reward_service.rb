@@ -1,10 +1,10 @@
 class BadgeRewardService
   CONDITIONS = {
-    'passed_test_at_first_attempt': Badges::PassedTestAtFirstAttempt,
-    'passed_test_without_mistakes': Badges::PassedTestWithoutMistakes,
-    'passed_first_hard_test': Badges::PassedFirstHardTest,
-    'passed_3_tests': Badges::Passed3Tests,
-    'failed_3_tests': Badges::Failed3Tests
+    passed_test_at_first_attempt: Badges::PassedTestAtFirstAttempt,
+    passed_test_without_mistakes: Badges::PassedTestWithoutMistakes,
+    passed_first_hard_test: Badges::PassedFirstHardTest,
+    passed_3_tests: Badges::Passed3Tests,
+    failed_3_tests: Badges::Failed3Tests
   }.freeze
 
   def initialize(test_passage)
@@ -32,10 +32,10 @@ class BadgeRewardService
     badge_condition = CONDITIONS[badge.condition.to_sym]
     return false unless badge_condition
 
-    if badge_condition == Badges::Passed3Tests || badge_condition == Badges::Failed3Tests
+    if [Badges::Passed3Tests, Badges::Failed3Tests].include?(badge_condition)
       badge_condition.reward?(@user)
     elsif badge_condition == Badges::PassedFirstHardTest
-    badge_condition.reward?(@user, @test_passage)
+      badge_condition.reward?(@user, @test_passage)
     else
       badge_condition.reward?(@test_passage)
     end
