@@ -1,10 +1,11 @@
 <nav class="navbar navbar-light text-white navbar-custom">
   <span id="locale" class=<%= I18n.locale %>></span>
   <div class="container">
-    <b class="navbar-brand text-white p-1">
+    <b class="navbar-brand text-white">
       <%= t('.panel') %> |
       <%= link_to 'TestGuru', admin_tests_path, class: 'navbar-brand text-white' %>|
-      <%= link_to 'Gists', admin_gists_path, class: 'navbar-brand text-white' %>
+      <%= link_to 'Gists', admin_gists_path, class: 'navbar-brand text-white' %>|
+      <%= link_to 'Badges', admin_badges_path, class: 'navbar-brand text-white' %>
     </b>
 
     <span class="navbar-text d-flex align-items-center">

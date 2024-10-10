@@ -1,0 +1,17 @@
+<li>
+  <b><%= badge.title %></b>
+  <p>
+    <%= badge.description %><br>
+    <%= link_to image_tag(badge.image_url, size: "150x150") %>
+  <div class="d-flex gap-4 mt-2 mb-2">
+    <%= button_to t('helpers.button.modify'),
+                  edit_admin_badge_path(badge),
+                  method: :get,
+                  class: 'btn btn-outline-primary text-custom btn-sm' %>
+    <%= button_to t('helpers.button.delete'), admin_badge_path(badge),
+                  method: :delete,
+                  data: { confirm: 'Вы уверены, что хотите удалить этот бэйдж?' },
+                  class: 'btn btn-danger btn-sm' %>
+  </div>
+  </p>
+</li>

@@ -20,4 +20,3 @@ class GistsController < ApplicationController
     params.require(:gist).permit(:test_passage_id)
   end
 end
-

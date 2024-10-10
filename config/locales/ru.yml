@@ -9,11 +9,15 @@ ru:
       test_passages:
         next: "Далее"
       questions:
-        save: "Сохранить"
+        save: "Сохранить Вопрос"
       answers:
-        save: "Сохранить"
+        save: "Сохранить Ответ"
+      categories:
+        save: "Сохранить Категорию"
       feedbacks:
         send: "Отправить"
+      badges:
+        save: "Сохранить Бэйдж"
     label:
       test:
         title: "Название"
@@ -24,6 +28,13 @@ ru:
       answer:
         body: "Ответ"
         correct: "Статус"
+      category:
+        title: "Название категории"
+      badge:
+        title: "Название"
+        description: "Описание"
+        condition: "Условие получения"
+        image_url: "Image_url"
     select:
       prompt: "Выберите категорию"
     button:
@@ -32,8 +43,14 @@ ru:
       back: "Назад"
       add_test: "Добавить Тест"
       add_question: "Добавить Вопрос"
+      add_category: "Добавить Категорию"
+      add_badge: "Добавить Бэйдж"
+      modify: "Изменить"
+      delete: "Удалить"
+      category_list: "Список Категорий"
       add_answer: "Добавить Ответ"
       modify_test: "Изменить тест"
+      modify_test_title: "Изменить название"
       delete_test: "Удалить тест"
       modify_question: "Изменить вопрос"
       delete_question: "Удалить вопрос"
@@ -52,6 +69,7 @@ ru:
     index:
       header: "Доступные тесты"
       title: "Название"
+      category: "Категория"
       level: "Уровень"
       questions_quantity: "Количество Вопросов"
       author: "Автор"
@@ -60,6 +78,8 @@ ru:
       empty: "Тестов еще нет."
 
   admin:
+    base:
+      no_access: 'Нет доступа к странице.'
     tests:
       create:
         success: "Тест был успешно создан."
@@ -70,6 +90,7 @@ ru:
       index:
         header: "Доступные тесты к редактированию"
         title: "Название"
+        category: "Категория"
         level: "Уровень"
         questions_quantity: "Количество Вопросов"
         author: "Автор"
@@ -97,6 +118,7 @@ ru:
         answer: "Ответ: "
         status: "Статус: "
     questions:
+      not_found: 'Вопрос не найден.'
       create:
         success: "Вопрос был успешно создан."
       update:
@@ -105,6 +127,7 @@ ru:
         success: "Вопрос был успешно удален."
       show:
         title: "Ответы:"
+        not_found: 'Вопрос не найден.'
     nav:
       welcome: "Добро пожаловать, "
       panel: "Панель управления"
@@ -114,6 +137,39 @@ ru:
         question: "Вопрос"
         url: "Адрес Gist"
         email: "Email Пользователя"
+    categories:
+      index:
+        header: "Все категории"
+      new:
+        header_new: "Добавить категорию"
+      edit:
+        header_edit: "Изменить категорию"
+      create:
+        success: "Категория была успешно создана."
+      update:
+        success: "Категория была успешно обновлена."
+      destroy:
+        success: "Категория была успешно удалена."
+    badges:
+      index:
+        header: "Все Бэйджи"
+      create:
+        success: "Бэйдж был успешно создан."
+      update:
+        success: "Бэйдж был успешно обновлен."
+      destroy:
+        success: "Бэйдж был успешно удален."
+      new:
+        header: "Создать Бэйдж"
+      edit:
+        header: "Редактировать Бэйдж"
+
+  badges:
+    index:
+      header: "Все Бэйджи"
+    my:
+      header: "Мои Бэйджи"
+      empty: "У вас пока нет бэйджей"
 
   gists:
     create:
@@ -124,9 +180,13 @@ ru:
     result:
       header: "Тест %{title} успешно завершен!"
       message: "Ваш результат: "
+      success: "%{percent}% Тест успешно пройден."
+      fail: "%{percent}% Тест не пройден."
     show:
       header: "Прохождение теста: %{title}."
       question_status: "Вопрос %{current} из %{total}"
+    update:
+      badges_awarded: "За выполнение теста вы получаете: %{badges}."
 
   gist_question_service:
     description: "Вопрос из теста: %{title} от TestGuru"

@@ -2,7 +2,7 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tests = Test.includes(:author, :questions).all
+    @tests = Test.includes(:author, :questions, :category).all
   end
 
   def start
