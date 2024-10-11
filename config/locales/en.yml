@@ -76,6 +76,7 @@ en:
       passage: "Passage"
       actions: "Actions"
       empty: "No tests available yet."
+    test_level_exists: "A test with this level already exists"
 
   admin:
     base:

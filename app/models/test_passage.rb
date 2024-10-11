@@ -25,7 +25,7 @@ class TestPassage < ApplicationRecord
 
   def result_count
     total_questions = test.questions.size
-    empty_questions = test.questions.left_outer_joins(:answers).where(answers: { id: nil }).count
+    empty_questions = test.questions.where.missing(:answers).count
 
     questions_with_answers = total_questions - empty_questions
 

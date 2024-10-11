@@ -1,7 +1,7 @@
 module ApplicationHelper
   def flash_message
-    flash.map do |key, message|
-      next unless message.present?
+    safe_join(flash.map do |key, message|
+      next if message.blank?
 
       alert_class = case key
                     when 'notice' then 'alert alert-info'
@@ -11,7 +11,7 @@ module ApplicationHelper
                     else 'alert alert-secondary'
                     end
 
-      content_tag :div, message.html_safe, class: alert_class
-    end.join.html_safe
+      content_tag :div, sanitize(message), class: alert_class
+    end.compact)
   end
 end

@@ -2,20 +2,19 @@ class Test < ApplicationRecord
   INFINITY = Float::INFINITY
 
   belongs_to :category
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :author, class_name: 'User', inverse_of: :tests
 
   has_many :questions, dependent: :destroy
   has_many :test_passages, dependent: :destroy
   has_many :users, through: :test_passages
-  has_many :feedbacks
+  has_many :feedbacks, dependent: :destroy
 
-  validates :title, presence: true, uniqueness: { scope: :level, message: 'тест с данным уровнем уже существует' }
+  validates :title, presence: true, uniqueness: { scope: :level, message: I18n.t('tests.test_level_exists') }
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :easy, -> { where(level: 0..1).order(created_at: :desc) }
   scope :medium, -> { where(level: 2..4).order(created_at: :desc) }
   scope :hard, -> { where(level: 5..INFINITY).order(created_at: :desc) }
-
   scope :by_level, ->(level) { where(level:).order(title: :desc) }
 
   scope :by_category, lambda { |category_name|

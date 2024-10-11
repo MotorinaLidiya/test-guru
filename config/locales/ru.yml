@@ -76,6 +76,7 @@ ru:
       passage: "Прохождение"
       actions: "Действия"
       empty: "Тестов еще нет."
+    test_level_exists: "Тест с данным уровнем уже существует"
 
   admin:
     base:
