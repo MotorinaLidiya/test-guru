@@ -1,6 +1,7 @@
 # .rubocop.yml
 
 AllCops:
+  SuggestExtensions: false
   NewCops: enable
   Exclude:
     - 'db/schema.rb'
@@ -10,6 +11,7 @@ AllCops:
     - 'config/initializers/*'
     - 'config/environments/*'
     - 'bin/*'
+    - 'vendor/**/*'
 
 Style/Documentation:
   Enabled: false
