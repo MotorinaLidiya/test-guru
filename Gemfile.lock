@@ -112,7 +112,7 @@ GEM
       logger
     faraday-net_http (3.3.0)
       net-http
-    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -157,6 +157,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.7-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     octicons (19.11.0)
     octicons_helper (19.11.0)
@@ -239,6 +241,11 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
+    rubocop-discourse (3.4.1)
+      rubocop (>= 1.1.0)
+      rubocop-rspec (>= 2.0.0)
+    rubocop-rspec (3.0.0)
+      rubocop (~> 1.40)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -327,6 +334,7 @@ DEPENDENCIES
   rails (~> 6.1.6)
   rails-i18n (~> 6.0)
   rubocop
+  rubocop-discourse
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
