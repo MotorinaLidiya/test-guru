@@ -27,8 +27,14 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :categories
     resources :gists, only: %i[index create]
+    resources :badges, only: %i[index new create edit update destroy]
   end
 
-  resources :gists, only: [:create]
+  resources :gists, only: :create
+
+  resources :badges, only: :index do
+    get 'my', on: :collection
+  end
 end

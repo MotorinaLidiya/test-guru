@@ -1,6 +1,9 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container">
-    <%= link_to 'TestGuru', root_path, class: 'navbar-brand fs-2' %>
+    <span>
+      <%= link_to 'TestGuru', root_path, class: 'navbar-brand fs-2' %>
+      <%= link_to 'My Badges', my_badges_path, class: 'navbar-brand fs-4' %>
+    </span>
 
     <span class="navbar-text d-flex justify-content-end align-items-center">
       <% if user_signed_in? %>

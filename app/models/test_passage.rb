@@ -12,9 +12,7 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids) && current_question.answers.any?
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
 
     save!
   end
@@ -37,9 +35,9 @@ class TestPassage < ApplicationRecord
   def result_message
     percent = result_count
     if percent >= SUCCESS_RATIO
-      "#{percent}% Тест успешно пройден."
+      I18n.t('test_passages.result.success', percent:)
     else
-      "#{percent}% Тест не пройден."
+      I18n.t('test_passages.result.fail', percent:)
     end
   end
 
@@ -50,11 +48,7 @@ class TestPassage < ApplicationRecord
   private
 
   def set_current_question
-    if new_record?
-      self.current_question = test.questions.first
-    else
-      self.current_question = next_question
-    end
+    self.current_question = new_record? ? test.questions.first : next_question
   end
 
   def set_first_question

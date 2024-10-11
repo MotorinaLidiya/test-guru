@@ -1,10 +1,12 @@
 class FeedbacksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[new create]
 
   def new
     @feedback = Feedback.new
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.name = current_user.name || current_user.email
@@ -19,6 +21,7 @@ class FeedbacksController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

@@ -1,7 +1,18 @@
 # .rubocop.yml
 
+inherit_gem:
+  rubocop-discourse: default.yml
+
 AllCops:
   NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'db/seeds.rb'
+    - 'config/*'
+    - 'config/initializers/*'
+    - 'config/environments/*'
+    - 'bin/*'
 
 Style/Documentation:
   Enabled: false
@@ -11,3 +22,12 @@ Style/FrozenStringLiteralComment:
 
 Style/ZeroLengthPredicate:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 150
+
+Metrics/MethodLength:
+  Max: 20

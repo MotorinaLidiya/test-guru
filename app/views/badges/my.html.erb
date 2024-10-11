@@ -1,0 +1,31 @@
+<div>
+  <h2 class="text-center mb-5"><%= t('.header') %></h2>
+
+  <div class="row">
+    <% if current_user.badges.any? %>
+      <% current_user.badges.each do |badge| %>
+        <div class="col-md-6 mb-5">
+          <ul>
+            <li>
+              <b><%= badge.title %></b>
+              <p>
+                <%= badge.description %><br>
+                <%= link_to image_tag(badge.image_url, size: "150x150") %>
+              </p>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    <% else %>
+      <b class="text-center mb-5"><%= t('.empty')%> &#128577;</b>
+    <% end %>
+  </div>
+
+  <p class="mt-5">
+    <%= button_to 'Посмотерть список всех Бэйджей', badges_path, method: :get, class: "btn btn-secondary" %>
+  </p>
+
+  <p>
+    <%= button_to t('helpers.button.back'), tests_path, method: :get, class: "btn btn-outline-secondary" %>
+  </p>
+</div>

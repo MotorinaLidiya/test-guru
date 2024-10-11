@@ -1,0 +1,31 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :badge_title, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :badge_description, rows: 2, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url, id: :badge_image_url, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :condition %>
+    <%= form.text_field :condition, id: :badge_condition, class: 'form-control' %>
+  </p>
+
+  <div class="mt-4">
+    <%= form.submit t('helpers.submit.badges.save'), class: "btn custom-button" %>
+  </div>
+<% end %>
+
+<p>
+  <%= button_to t('helpers.button.back'), admin_badges_path, method: :get, class: "btn btn-outline-primary text-custom" %>
+</p>

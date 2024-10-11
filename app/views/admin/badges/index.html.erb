@@ -1,0 +1,20 @@
+<div>
+  <h2 class="text-center mb-5"><%= t('.header') %></h2>
+  <p>
+    <%= button_to t('helpers.button.add_badge'), new_admin_badge_path, method: :get, class: "btn custom-button" %>
+  </p>
+
+  <div class="row">
+    <% @badges.each do |badge| %>
+      <div class="col-md-6 mb-5">
+        <ul>
+          <%= render 'badge', badge: badge %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <p>
+    <%= button_to t('helpers.button.back'), admin_tests_path, method: :get, class: "btn btn-outline-primary text-custom" %>
+  </p>
+</div>
