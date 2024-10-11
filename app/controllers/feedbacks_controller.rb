@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.name = current_user.name || current_user.email
@@ -20,6 +21,7 @@ class FeedbacksController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   private
 

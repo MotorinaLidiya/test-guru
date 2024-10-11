@@ -21,7 +21,7 @@ class GistQuestionService
 
     Success(result)
   rescue Faraday::ConnectionFailed
-    return Failure()
+    Failure()
   end
 
   private

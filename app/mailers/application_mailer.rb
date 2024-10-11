@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "TestGuru <#{ENV['SMTP_USERNAME']}>"
+  default from: "TestGuru <#{ENV.fetch('SMTP_USERNAME', nil)}>"
   layout 'mailer'
 end
