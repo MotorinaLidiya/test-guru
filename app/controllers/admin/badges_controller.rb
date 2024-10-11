@@ -9,6 +9,8 @@ class Admin::BadgesController < Admin::BaseController
     @badge = Badge.new
   end
 
+  def edit; end
+
   def create
     @badge = Badge.new(badge_params)
 
@@ -18,8 +20,6 @@ class Admin::BadgesController < Admin::BaseController
       render :new
     end
   end
-
-  def edit; end
 
   def delete; end
 
