@@ -23,6 +23,7 @@ en:
         title: "Title"
         level: "Level"
         category_id: "Category"
+        duration: "Timer"
       question:
         body: "Question"
       answer:
@@ -52,6 +53,7 @@ en:
       modify_test: "Edit Test"
       modify_test_title: "Modify Title"
       delete_test: "Delete Test"
+      finish_test: "Finish Test"
       modify_question: "Modify question"
       delete_question: "Delete question"
       modify_answer: "Modify answer"
@@ -77,6 +79,7 @@ en:
       actions: "Actions"
       empty: "No tests available yet."
     test_level_exists: "A test with this level already exists"
+    test_timer_format: "Change timer format (12:34, 1:23)"
 
   admin:
     base:
@@ -94,6 +97,7 @@ en:
         category: "Category"
         level: "Level"
         questions_quantity: "Number of Questions"
+        duration: "Duration"
         author: "Author"
         passage: "Passage"
         actions: "Actions"
@@ -178,10 +182,13 @@ en:
 
   test_passages:
     result:
-      header: "Test %{title} was successfully completed!"
+      header: "Test %{title} was completed!"
+      header_time_over: "Test %{title} was not completed"
       message: "Your result: "
       success: "%{percent}% Test passed successfully."
       fail: "%{percent}% Test failed."
+      remaining_time: "Remaining time:"
+      time_over: "You didn't manage to pass the test."
     show:
       header: "Passing the test: %{title}."
       question_status: "Question %{current} of %{total}"

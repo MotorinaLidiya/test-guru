@@ -5,7 +5,9 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :set_current_question
+  validates :remaining_time, presence: true, allow_blank: true
+
+  before_validation :set_current_question, unless: -> { remaining_time_changed? }
 
   def completed?
     current_question.nil?
@@ -13,7 +15,6 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
-
     save!
   end
 
@@ -23,17 +24,17 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).index(current_question) + 1
   end
 
-  def result_count
-    total_questions = test.questions.size
-    empty_questions = test.questions.where.missing(:answers).count
+  def result_rate
+    return @rate if @rate
 
-    questions_with_answers = total_questions - empty_questions
+    test.questions_cached_count ||= test.questions.joins(:answers).distinct.count
+    return @rate = 0 if test.questions_cached_count.zero?
 
-    (correct_questions.to_f / questions_with_answers * 100).round
+    @rate = (correct_questions.to_f / test.questions_cached_count * 100).round
   end
 
   def result_message
-    percent = result_count
+    percent = result_rate
     if percent >= SUCCESS_RATIO
       I18n.t('test_passages.result.success', percent:)
     else
@@ -42,7 +43,20 @@ class TestPassage < ApplicationRecord
   end
 
   def result_successful?
-    result_count >= SUCCESS_RATIO
+    result_rate >= SUCCESS_RATIO
+  end
+
+  def time_over?
+    return false if completed?
+
+    remaining_time <= 0
+  end
+
+  def formatted_remaining_time
+    minutes = (remaining_time / 60).floor
+    seconds = (remaining_time % 60).round
+
+    "#{minutes}:#{seconds.to_s.rjust(2, '0')}"
   end
 
   private

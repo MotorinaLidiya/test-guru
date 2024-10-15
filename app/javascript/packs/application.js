@@ -14,6 +14,7 @@ import '../utilities/password-check'
 import '../utilities/form_inline'
 import '../utilities/locales'
 import '../utilities/progress_bar'
+import '../utilities/timer'
 
 import $ from 'jquery'
 import 'popper.js'

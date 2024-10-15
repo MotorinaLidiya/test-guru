@@ -32,6 +32,12 @@ Rails.application.routes.draw do
     resources :badges, only: %i[index new create edit update destroy]
   end
 
+  namespace :api do
+    resources :test_passages, only: [] do
+      post :save_time, on: :member
+    end
+  end
+
   resources :gists, only: :create
 
   resources :badges, only: :index do

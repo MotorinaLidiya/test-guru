@@ -5,8 +5,7 @@ module Badges
 
       passed_hard_test = TestPassage.joins(:test)
                                     .where(user:, tests: { level: 5..Float::INFINITY })
-                                    .select(&:result_successful?)
-                                    .first
+                                    .find(&:result_successful?)
       passed_hard_test == test_passage
     end
   end

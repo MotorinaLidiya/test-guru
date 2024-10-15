@@ -1,12 +1,21 @@
 <div class="text-center mt-5">
-  <h2><%= t('.header', title: @test_passage.test.title) %></h2>
 
-  <h3>
-    <%= t('test_passages.result.message') %>
-    <span class="<%= @test_passage.result_successful? ? 'text-success' : 'text-danger' %>">
-      <%= @test_passage.result_message %>
-    </span>
-  </h3><br>
+  <% if @test_passage.time_over? %>
+    <h2><%= t('.header_time_over', title: @test_passage.test.title) %></h2><br>
+    <h3><%= t('.time_over') %></h3><br>
+  <% else %>
+    <h2><%= t('.header', title: @test_passage.test.title) %></h2><br>
+
+    <h3>
+      <%= "#{t('.remaining_time')} #{@test_passage.formatted_remaining_time}" if @test_passage.test.duration.present?%><br>
+
+      <%= t('test_passages.result.message') %>
+
+      <span class="<%= @test_passage.result_successful? ? 'text-success' : 'text-danger' %>">
+        <%= @test_passage.result_message %>
+      </span><br>
+    </h3>
+  <% end %>
 
   <div class="mt-4">
     <%= button_to t('helpers.button.back_to_tests'), tests_path, method: :get, class: 'btn btn-secondary' %>
