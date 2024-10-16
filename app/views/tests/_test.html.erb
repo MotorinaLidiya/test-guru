@@ -10,7 +10,7 @@
         <%= button_to t('helpers.button.start_test'),
                       start_test_path(test),
                       class: "btn btn-outline-secondary",
-                      data: { confirm: "Тест ограничен по времени: #{test.duration}. Готовы пройти тест?" } %>
+                      data: { confirm: "Тест ограничен по времени: #{test.formatted_duration}. Готовы пройти тест?" } %>
       <% else %>
         <%= button_to t('helpers.button.start_test'),
                       start_test_path(test),

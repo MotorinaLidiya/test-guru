@@ -35,6 +35,6 @@ function formInlineHandler(testId) {
     if ($formInline.is(':visible')) {
         button.textContent = i18next.t('button.cancel')
     } else {
-        button.textContent = i18next.t('button.modify_test')
+        button.textContent = i18next.t('button.modify_test_title')
     }
 }

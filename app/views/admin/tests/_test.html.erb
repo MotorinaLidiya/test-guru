@@ -6,7 +6,7 @@
   <td class="center-text"><%= test.category.title %></td>
   <td class="center-text"><%= test.level %></td>
   <td class="center-text"><%= test.questions.length %></td>
-  <td class="center-text"><%= test.duration.present? ? test.duration : '-' %></td>
+  <td class="center-text"><%= test.duration.present? ? test.formatted_duration : '-' %></td>
   <td class="center-text"><%= test.author.first_name %> <%= test.author.last_name %></td>
   <td class="center-text">
     <%= button_to t('helpers.button.open'), admin_test_path(test), method: :get, class: "btn btn-light text-custom btn-sm border" %>

@@ -5,22 +5,20 @@ document.addEventListener('turbolinks:load', function () {
     const timerElement = document.getElementById('time-remaining')
     if (!timerElement) return
 
-    const duration = timer.dataset.duration
+    let duration = Number(timer.dataset.duration)
     const testPassageId = timer.dataset.testPassageId
-    if (!duration || duration.split(':').length !== 2) return
 
-    let remainingTime = durationToSeconds(duration)
-
-    if (localStorage.getItem(`remainingTime_${testPassageId}`)) {
-        remainingTime = Number(localStorage.getItem(`remainingTime_${testPassageId}`))
+    const storedDuration = localStorage.getItem(`duration_${testPassageId}`);
+    if (storedDuration) {
+        duration = Number(storedDuration);
     }
 
     function updateTimer() {
-        const minutes = Math.floor(remainingTime / 60)
-        const seconds = Math.floor(remainingTime % 60)
+        const minutes = Math.floor(duration / 60)
+        const seconds = Math.floor(duration % 60)
         timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 
-        if (remainingTime <= 0) {
+        if (duration <= 0) {
             clearInterval(timerInterval)
             alert("Время вышло!")
             setTimeout(function () {
@@ -29,8 +27,8 @@ document.addEventListener('turbolinks:load', function () {
             return
         }
 
-        remainingTime--
-        localStorage.setItem(`remainingTime_${testPassageId}`, remainingTime)
+        duration--
+        localStorage.setItem(`duration_${testPassageId}`, `${duration}`)
     }
 
     const timerInterval = setInterval(updateTimer, 1000)
@@ -40,44 +38,15 @@ document.addEventListener('turbolinks:load', function () {
         finishTestButton.addEventListener('click', function (e) {
             e.preventDefault()
             clearInterval(timerInterval)
-            localStorage.removeItem(`remainingTime_${testPassageId}`)
-            sendRemainingTime(testPassageId, remainingTime)
+            localStorage.removeItem(`duration_${testPassageId}`)
+            setTimeout(function () {
+                window.location.href = `/test_passages/${testPassageId}/result`
+            }, 1000)
         })
     }
 
     window.addEventListener('beforeunload', function () {
         clearInterval(timerInterval)
-        localStorage.setItem(`remainingTime_${testPassageId}`, remainingTime)
+        localStorage.setItem(`duration_${testPassageId}`, `${duration}`)
     })
 })
-
-function durationToSeconds(duration) {
-    const [minutes, seconds] = duration.split(':').map(Number)
-    return minutes * 60 + seconds
-}
-
-function sendRemainingTime(testPassageId, remainingTime) {
-    fetch(`/api/test_passages/${testPassageId}/save_time?remaining_time=${remainingTime}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
-        .then(response => {
-            console.log(response)
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Успешно сохранено:', data);
-
-            document.getElementById('final_question_form').submit()
-            //window.location.href = `/test_passages/${testPassageId}/result`
-        })
-        .catch(error => {
-            console.error('Ошибка при отправке оставшегося времени:', error);
-            console.error(`/api/test_passages/${testPassageId}/save_time`);
-        });
-}

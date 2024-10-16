@@ -5,7 +5,7 @@ i18next.init({
         ru: {
             translation: {
                 button: {
-                    "modify_test": 'Изменить тест',
+                    "modify_test_title": 'Изменить название',
                     "cancel": 'Отменить'
                 }
             }
@@ -13,7 +13,7 @@ i18next.init({
         en: {
             translation: {
                 button: {
-                    "modify_test": 'Modify Test',
+                    "modify_test_title": 'Modify Title',
                     "cancel": 'Cancel'
                 }
             }

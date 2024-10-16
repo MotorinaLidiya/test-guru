@@ -7,7 +7,7 @@ class TestPassage < ApplicationRecord
 
   validates :remaining_time, presence: true, allow_blank: true
 
-  before_validation :set_current_question, unless: -> { remaining_time_changed? }
+  before_validation :set_current_question
 
   def completed?
     current_question.nil?
@@ -44,6 +44,18 @@ class TestPassage < ApplicationRecord
 
   def result_successful?
     result_rate >= SUCCESS_RATIO
+  end
+
+  def test_completion_time
+    return nil if created_at.nil? || test.nil? || test.duration.nil?
+
+    created_at + test.duration
+  end
+
+  def remaining_time
+    return nil if test_completion_time.nil?
+
+    test_completion_time - Time.current
   end
 
   def time_over?
