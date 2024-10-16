@@ -25,6 +25,7 @@
   <h3 class="mb-3"><%= @test_passage.current_question.body %></h3>
 
   <%= form_with url: test_passage_path(@test_passage), id: "final_question_form", local: true, method: :put do |form| %>
+    <%= hidden_field_tag :remaining_time, '', id: 'remaining-time' %>
     <div class="form-group">
       <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
         <div class="form-check mb-3">

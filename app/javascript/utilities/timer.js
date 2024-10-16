@@ -13,6 +13,23 @@ document.addEventListener('turbolinks:load', function () {
         duration = Number(storedDuration);
     }
 
+    const remainingTimeInput = document.getElementById('remaining-time')
+    if (!remainingTimeInput) return
+
+    function submit() {
+        const button = document.getElementById('final_question_form')
+
+        if (button) {
+            remainingTimeInput.value = duration
+            button.submit()
+        }
+        else {
+            setTimeout(function () {
+                window.location.href = `/test_passages/${testPassageId}/result`
+            }, 1000)
+        }
+    }
+
     function updateTimer() {
         const minutes = Math.floor(duration / 60)
         const seconds = Math.floor(duration % 60)
@@ -21,9 +38,8 @@ document.addEventListener('turbolinks:load', function () {
         if (duration <= 0) {
             clearInterval(timerInterval)
             alert("Время вышло!")
-            setTimeout(function () {
-                window.location.href = `/test_passages/${testPassageId}/result`
-            }, 1000)
+            remainingTimeInput.value = 0
+            submit()
             return
         }
 
@@ -39,9 +55,7 @@ document.addEventListener('turbolinks:load', function () {
             e.preventDefault()
             clearInterval(timerInterval)
             localStorage.removeItem(`duration_${testPassageId}`)
-            setTimeout(function () {
-                window.location.href = `/test_passages/${testPassageId}/result`
-            }, 1000)
+            submit()
         })
     }
 

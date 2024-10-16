@@ -5,15 +5,15 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  validates :remaining_time, presence: true, allow_blank: true
-
-  before_validation :set_current_question
+  before_validation :set_current_question, unless: -> { remaining_time_changed? }
 
   def completed?
     current_question.nil?
   end
 
   def accept!(answer_ids)
+    return set_current_question if time_over?
+
     self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
     save!
   end
@@ -27,10 +27,7 @@ class TestPassage < ApplicationRecord
   def result_rate
     return @rate if @rate
 
-    test.questions_cached_count ||= test.questions.joins(:answers).distinct.count
-    return @rate = 0 if test.questions_cached_count.zero?
-
-    @rate = (correct_questions.to_f / test.questions_cached_count * 100).round
+    @rate = calculate_rate
   end
 
   def result_message
@@ -47,21 +44,15 @@ class TestPassage < ApplicationRecord
   end
 
   def test_completion_time
-    return nil if created_at.nil? || test.nil? || test.duration.nil?
+    return nil if test.nil? || test.duration.nil?
 
     created_at + test.duration
-  end
-
-  def remaining_time
-    return nil if test_completion_time.nil?
-
-    test_completion_time - Time.current
   end
 
   def time_over?
     return false if completed?
 
-    remaining_time <= 0
+    remaining_time&.zero?
   end
 
   def formatted_remaining_time
@@ -91,5 +82,16 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def calculate_rate
+    count = questions_cached_count
+    return 0 if count.zero?
+
+    (correct_questions.to_f / count * 100).round
+  end
+
+  def questions_cached_count
+    test.questions_cached_count ||= test.questions.joins(:answers).distinct.count
   end
 end
