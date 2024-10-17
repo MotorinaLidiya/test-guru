@@ -1,19 +1,55 @@
 document.addEventListener('turbolinks:load', function () {
-    const timer =  document.querySelector('.timer')
+    const timer = document.querySelector('.timer')
     if (!timer || !timer.dataset.duration) return
-
-    const timerElement = document.getElementById('time-remaining')
-    if (!timerElement) return
 
     let duration = Number(timer.dataset.duration)
     const testPassageId = timer.dataset.testPassageId
 
-    const storedDuration = localStorage.getItem(`duration_${testPassageId}`)
-    if (storedDuration) {
-        duration = Number(storedDuration)
+    new TestPassageTimer(testPassageId, duration)
+})
+
+class TestPassageTimer {
+    constructor(testPassageId, duration) {
+        this.testPassageId = testPassageId
+        this.duration = duration
+        this.timerElement = document.getElementById('time-remaining')
+        this.timerInterval = null
+
+        const storedDuration = localStorage.getItem(`duration_${this.testPassageId}`)
+        if (storedDuration) {
+            this.duration = Number(storedDuration)
+        }
+
+        this.init()
     }
 
-    function submit() {
+    init() {
+        if (!this.timerElement) return
+        this.startTimer()
+        this.setupFinishButton()
+        this.setupUnloadListener()
+    }
+
+    startTimer() {
+        this.timerInterval = setInterval(() => this.updateTimer(), 1000)
+    }
+
+    updateTimer() {
+        const minutes = Math.floor(this.duration / 60)
+        const seconds = Math.floor(this.duration % 60)
+        this.timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+
+        if (this.duration <= 0) {
+            clearInterval(this.timerInterval)
+            alert("Время вышло!")
+            this.submit()
+        }
+
+        this.duration--
+        localStorage.setItem(`duration_${this.testPassageId}`, `${this.duration}`)
+    }
+
+    submit() {
         const form = document.getElementById('final_question_form')
 
         if (form) {
@@ -26,36 +62,22 @@ document.addEventListener('turbolinks:load', function () {
         }
     }
 
-    function updateTimer() {
-        const minutes = Math.floor(duration / 60)
-        const seconds = Math.floor(duration % 60)
-        timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-
-        if (duration <= 0) {
-            clearInterval(timerInterval)
-            alert("Время вышло!")
-            submit()
-            return
+    setupFinishButton() {
+        const finishTestButton = document.getElementById('finish-test-button')
+        if (finishTestButton) {
+            finishTestButton.addEventListener('click', (e) => {
+                e.preventDefault()
+                clearInterval(this.timerInterval)
+                localStorage.removeItem(`duration_${this.testPassageId}`)
+                this.submit()
+            })
         }
-
-        duration--
-        localStorage.setItem(`duration_${testPassageId}`, `${duration}`)
     }
 
-    const timerInterval = setInterval(updateTimer, 1000)
-
-    const finishTestButton = document.getElementById('finish-test-button')
-    if (finishTestButton) {
-        finishTestButton.addEventListener('click', function (e) {
-            e.preventDefault()
-            clearInterval(timerInterval)
-            localStorage.removeItem(`duration_${testPassageId}`)
-            submit()
+    setupUnloadListener() {
+        window.addEventListener('beforeunload', () => {
+            clearInterval(this.timerInterval)
+            localStorage.setItem(`duration_${this.testPassageId}`, `${this.duration}`)
         })
     }
-
-    window.addEventListener('beforeunload', function () {
-        clearInterval(timerInterval)
-        localStorage.setItem(`duration_${testPassageId}`, `${duration}`)
-    })
-})
+}
