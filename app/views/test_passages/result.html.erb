@@ -7,7 +7,7 @@
     <h2><%= t('.header', title: @test_passage.test.title) %></h2><br>
 
     <h3>
-      <%= "#{t('.remaining_time')} #{@test_passage.formatted_remaining_time}" if @test_passage.test.duration.present?%><br>
+      <%= "#{t('.remaining_time')} #{@test_passage.remaining_minutes.to_s.rjust(2, '0')}:#{@test_passage.remaining_seconds.to_s.rjust(2, '0')}" if @test_passage.test.duration.present?%><br>
 
       <%= t('test_passages.result.message') %>
 

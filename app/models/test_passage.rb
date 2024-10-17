@@ -25,9 +25,9 @@ class TestPassage < ApplicationRecord
   end
 
   def result_rate
-    return @rate if @rate
+    return @result_rate if @result_rate
 
-    @rate = calculate_rate
+    @result_rate ||= calculate_rate
   end
 
   def result_message
@@ -53,12 +53,14 @@ class TestPassage < ApplicationRecord
     created_at + test.duration.seconds if test.duration.present?
   end
 
-  def formatted_remaining_time
+  def remaining_minutes
     remaining_time = [test_completion_time - Time.current, 0].max
-    minutes = (remaining_time / 60).floor
-    seconds = (remaining_time % 60).round
+    (remaining_time / 60).floor
+  end
 
-    "#{minutes}:#{seconds.to_s.rjust(2, '0')}"
+  def remaining_seconds
+    remaining_time = [test_completion_time - Time.current, 0].max
+    (remaining_time % 60).round
   end
 
   private

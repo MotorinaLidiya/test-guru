@@ -8,16 +8,16 @@ document.addEventListener('turbolinks:load', function () {
     let duration = Number(timer.dataset.duration)
     const testPassageId = timer.dataset.testPassageId
 
-    const storedDuration = localStorage.getItem(`duration_${testPassageId}`);
+    const storedDuration = localStorage.getItem(`duration_${testPassageId}`)
     if (storedDuration) {
-        duration = Number(storedDuration);
+        duration = Number(storedDuration)
     }
 
     function submit() {
-        const button = document.getElementById('final_question_form')
+        const form = document.getElementById('final_question_form')
 
-        if (button) {
-            button.submit()
+        if (form) {
+            form.submit()
         }
         else {
             setTimeout(function () {
