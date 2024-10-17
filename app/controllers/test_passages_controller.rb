@@ -9,9 +9,6 @@ class TestPassagesController < ApplicationController
   def result; end
 
   def update
-    remaining_time = params[:remaining_time]
-    @test_passage.update(remaining_time:) if remaining_time.present?
-
     @test_passage.accept!(params[:answer_ids])
 
     if @test_passage.completed?

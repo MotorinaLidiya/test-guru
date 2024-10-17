@@ -5,7 +5,7 @@ class TestPassage < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :set_current_question, unless: -> { remaining_time_changed? }
+  before_validation :set_current_question
 
   def completed?
     current_question.nil?
@@ -43,19 +43,18 @@ class TestPassage < ApplicationRecord
     result_rate >= SUCCESS_RATIO
   end
 
-  def test_completion_time
-    return nil if test.nil? || test.duration.nil?
+  def time_over?
+    return false unless test.duration.present? && !completed?
 
-    created_at + test.duration
+    Time.current >= test_completion_time
   end
 
-  def time_over?
-    return false if completed?
-
-    remaining_time&.zero?
+  def test_completion_time
+    created_at + test.duration.seconds if test.duration.present?
   end
 
   def formatted_remaining_time
+    remaining_time = [test_completion_time - Time.current, 0].max
     minutes = (remaining_time / 60).floor
     seconds = (remaining_time % 60).round
 

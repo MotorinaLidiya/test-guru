@@ -13,14 +13,10 @@ document.addEventListener('turbolinks:load', function () {
         duration = Number(storedDuration);
     }
 
-    const remainingTimeInput = document.getElementById('remaining-time')
-    if (!remainingTimeInput) return
-
     function submit() {
         const button = document.getElementById('final_question_form')
 
         if (button) {
-            remainingTimeInput.value = duration
             button.submit()
         }
         else {
@@ -38,7 +34,6 @@ document.addEventListener('turbolinks:load', function () {
         if (duration <= 0) {
             clearInterval(timerInterval)
             alert("Время вышло!")
-            remainingTimeInput.value = 0
             submit()
             return
         }
