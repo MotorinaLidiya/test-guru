@@ -19,6 +19,12 @@
       </div>
 
       <div class="mb-3">
+        <%= form.label :duration, class: 'form-label' %>
+        <%= form.text_field :duration, id: :test_duration, class: 'form-control'%>
+        <small class="form-text text-muted">Введите время в секундах (Например, 90 секунд это 1,5 минуты)</small>
+      </div>
+
+      <div class="mb-3">
         <%= form.submit t('helpers.submit.tests.create'), class: "btn btn-outline-primary text-custom" if @test.new_record? %>
         <%= form.submit t('helpers.submit.tests.update'), class: "btn btn-outline-primary text-custom" unless @test.new_record? %>
       </div>

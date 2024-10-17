@@ -25,9 +25,9 @@ document.addEventListener('turbolinks:load', function() {
         }
 
         if (currentList > 1) {
-            showLessButton.classList.remove('hide')
+            showLessButton && showLessButton.classList.remove('hide')
         } else {
-            showLessButton.classList.add('hide')
+            showLessButton && showLessButton.classList.add('hide')
         }
     }
 

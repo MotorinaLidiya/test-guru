@@ -12,8 +12,9 @@ class TestPassage < ApplicationRecord
   end
 
   def accept!(answer_ids)
-    self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
+    return set_current_question if time_over?
 
+    self.correct_questions += 1 if correct_answer?(answer_ids) && current_question.answers.any?
     save!
   end
 
@@ -23,17 +24,14 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).index(current_question) + 1
   end
 
-  def result_count
-    total_questions = test.questions.size
-    empty_questions = test.questions.where.missing(:answers).count
+  def result_rate
+    return @result_rate if @result_rate
 
-    questions_with_answers = total_questions - empty_questions
-
-    (correct_questions.to_f / questions_with_answers * 100).round
+    @result_rate ||= calculate_rate
   end
 
   def result_message
-    percent = result_count
+    percent = result_rate
     if percent >= SUCCESS_RATIO
       I18n.t('test_passages.result.success', percent:)
     else
@@ -42,7 +40,27 @@ class TestPassage < ApplicationRecord
   end
 
   def result_successful?
-    result_count >= SUCCESS_RATIO
+    result_rate >= SUCCESS_RATIO
+  end
+
+  def time_over?
+    return false unless test.duration.present? && !completed?
+
+    Time.current >= test_completion_time
+  end
+
+  def test_completion_time
+    created_at + test.duration.seconds if test.duration.present?
+  end
+
+  def remaining_minutes
+    remaining_time = [test_completion_time - Time.current, 0].max
+    (remaining_time / 60).floor
+  end
+
+  def remaining_seconds
+    remaining_time = [test_completion_time - Time.current, 0].max
+    (remaining_time % 60).round
   end
 
   private
@@ -65,5 +83,16 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def calculate_rate
+    count = questions_cached_count
+    return 0 if count.zero?
+
+    (correct_questions.to_f / count * 100).round
+  end
+
+  def questions_cached_count
+    test.questions_cached_count ||= test.questions.joins(:answers).distinct.count
   end
 end

@@ -23,6 +23,7 @@ ru:
         title: "Название"
         level: "Уровень"
         category_id: "Категория"
+        duration: "Длительность выполнения"
       question:
         body: "Вопрос"
       answer:
@@ -52,6 +53,7 @@ ru:
       modify_test: "Изменить тест"
       modify_test_title: "Изменить название"
       delete_test: "Удалить тест"
+      finish_test: "Завершить тест"
       modify_question: "Изменить вопрос"
       delete_question: "Удалить вопрос"
       modify_answer: "Изменить ответ"
@@ -77,6 +79,7 @@ ru:
       actions: "Действия"
       empty: "Тестов еще нет."
     test_level_exists: "Тест с данным уровнем уже существует"
+    test_timer_format: "Неверный фомат таймера (12:34, 1:23)"
 
   admin:
     base:
@@ -94,6 +97,7 @@ ru:
         category: "Категория"
         level: "Уровень"
         questions_quantity: "Количество Вопросов"
+        duration: "Время"
         author: "Автор"
         passage: "Прохождение"
         actions: "Действия"
@@ -179,10 +183,13 @@ ru:
 
   test_passages:
     result:
-      header: "Тест %{title} успешно завершен!"
+      header: "Тест %{title} завершен!"
+      header_time_over: "Тест %{title} не завершен"
       message: "Ваш результат: "
       success: "%{percent}% Тест успешно пройден."
       fail: "%{percent}% Тест не пройден."
+      remaining_time: "Осталось времени:"
+      time_over: "Вы не успели пройти тест вовремя."
     show:
       header: "Прохождение теста: %{title}."
       question_status: "Вопрос %{current} из %{total}"
